@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Descuentos Chile 2026 | % Descuento y Precio Final</title>
+  <meta name="description" content="Calcula descuentos en porcentaje o valor fijo, precio final con descuento, y el % de descuento entre dos precios. Herramienta gratuita para compras en Chile.">
+  <meta name="keywords" content="calculadora descuentos Chile, calcular porcentaje descuento, precio con descuento, descuento porcentual, cuanto ahorro con descuento">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadoras-chile-5sbh.vercel.app/calculadora-descuentos.html">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cómo calculo el precio final con descuento?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Multiplica el precio original por (1 - porcentaje/100). Por ejemplo: $50.000 con 20% de descuento = $50.000 × 0,80 = $40.000."}
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo calculo el porcentaje de descuento entre dos precios?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Divide la diferencia entre los precios por el precio original y multiplica por 100. Fórmula: ((Precio original - Precio final) / Precio original) × 100."}
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué es el precio neto y bruto en Chile?",
+        "acceptedAnswer": {"@type": "Answer", "text": "El precio neto es sin IVA y el precio bruto incluye el IVA del 19%. En Chile, la mayoría de los precios al público ya incluyen IVA (son precios brutos)."}
+      }
+    ]
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987300357303329" crossorigin="anonymous"></script>
+  <style>
+    .page-hero { background: linear-gradient(135deg, #7C3AED, #6D28D9, #A855F7); }
+    .desc-tabs { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+    .desc-tab { padding:9px 18px; border-radius:8px; border:2px solid var(--border); background:#fff; cursor:pointer; font-weight:600; font-size:.9rem; transition:.2s; }
+    .desc-tab.active { background:#7C3AED; color:#fff; border-color:#7C3AED; }
+    .desc-result-box { background:linear-gradient(135deg,#7C3AED,#A855F7); color:#fff; border-radius:var(--radius); padding:28px; margin-top:20px; text-align:center; }
+    .desc-main-val { font-size:clamp(2.2rem,5vw,3.2rem); font-weight:900; margin:8px 0; }
+    .desc-sub-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-top:16px; }
+    .desc-sub { background:rgba(255,255,255,.18); border-radius:8px; padding:12px; }
+    .desc-sub .dv { font-size:1.3rem; font-weight:800; }
+    .desc-sub .dl { font-size:.77rem; opacity:.85; margin-top:2px; }
+    .tab-section { display:none; }
+    .tab-section.active { display:block; }
+    .saving-badge { display:inline-block; background:#10B981; color:#fff; border-radius:99px; padding:4px 14px; font-size:.85rem; font-weight:700; margin-top:8px; }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🇨🇱</span><span class="logo-text">Calculadoras<strong>Chile</strong></span></a>
+    <nav class="main-nav" id="main-nav">
+      <div class="nav-item has-dropdown">
+        <a href="index.html#calculadoras" class="nav-link active">Calculadoras ▾</a>
+        <div class="dropdown-menu">
+          <a href="sueldo-liquido.html">💼 Sueldo Líquido</a>
+          <a href="uf-calculadora.html">📊 Calculadora UF</a>
+          <a href="credito-hipotecario.html">🏠 Crédito Hipotecario</a>
+          <a href="calculadora-iva.html">🧾 Calculadora IVA</a>
+          <a href="calculadora-utm.html">📐 UTM a CLP</a>
+          <a href="calculadora-vacaciones.html">🌴 Vacaciones</a>
+          <a href="calculadora-finiquito.html">📋 Finiquito</a>
+          <a href="calculadora-interes-compuesto.html">💹 Interés Compuesto</a>
+          <a href="calculadora-descuentos.html">🏷️ Descuentos</a>
+          <a href="conversor-dolar.html">💵 Conversor Dólar</a>
+          <a href="calculadora-afp.html">🏦 Calculadora AFP</a>
+        </div>
+      </div>
+      <a href="blog/" class="nav-link">Blog</a>
+      <a href="sobre-nosotros.html" class="nav-link">Nosotros</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="breadcrumbs">
+  <div class="bc-inner"><a href="index.html">Inicio</a><span class="sep">›</span><a href="index.html#calculadoras">Calculadoras</a><span class="sep">›</span><span class="current">Calculadora de Descuentos</span></div>
+</div>
+
+<header class="page-hero" style="padding:48px 20px 40px; text-align:center;">
+  <div class="container">
+    <h1 style="color:#fff; font-size:clamp(1.6rem,4vw,2.4rem); font-weight:800; margin-bottom:10px;">Calculadora de Descuentos 2026</h1>
+    <p style="color:#fff; opacity:.88; font-size:1.05rem; max-width:560px; margin:0 auto;">Calcula precios con descuento, ahorro total y porcentaje de rebaja en segundos.</p>
+  </div>
+</header>
+
+<main class="container" style="padding-top:28px; padding-bottom:48px">
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="card">
+    <h2>🏷️ Calcular descuento</h2>
+
+    <div class="desc-tabs">
+      <button class="desc-tab active" onclick="switchTab('pct')">% de descuento → Precio final</button>
+      <button class="desc-tab" onclick="switchTab('val')">Descuento en $ → Precio final</button>
+      <button class="desc-tab" onclick="switchTab('rev')">¿Cuánto % me rebajaron?</button>
+      <button class="desc-tab" onclick="switchTab('multi')">Múltiples descuentos</button>
+    </div>
+
+    <!-- Pestaña 1: porcentaje -->
+    <div class="tab-section active" id="tab-pct">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="pct-precio">Precio original (CLP $)</label>
+          <input type="text" id="pct-precio" placeholder="Ej: 49.990" inputmode="numeric" oninput="formatInput(this); calcPct()">
+        </div>
+        <div class="form-group">
+          <label for="pct-porc">Porcentaje de descuento (%)</label>
+          <input type="number" id="pct-porc" placeholder="Ej: 30" min="0" max="100" step="0.1" oninput="calcPct()">
+        </div>
+      </div>
+      <div id="res-pct" style="display:none">
+        <div class="desc-result-box">
+          <div style="font-size:.9rem; opacity:.85;">Precio final</div>
+          <div class="desc-main-val" id="pct-final">$0</div>
+          <div class="saving-badge" id="pct-badge">Ahorras $0</div>
+          <div class="desc-sub-grid" style="margin-top:16px">
+            <div class="desc-sub"><div class="dv" id="pct-ahorro">$0</div><div class="dl">Ahorro total</div></div>
+            <div class="desc-sub"><div class="dv" id="pct-precio-show">$0</div><div class="dl">Precio original</div></div>
+            <div class="desc-sub"><div class="dv" id="pct-porc-show">0%</div><div class="dl">Descuento aplicado</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pestaña 2: valor fijo -->
+    <div class="tab-section" id="tab-val">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="val-precio">Precio original (CLP $)</label>
+          <input type="text" id="val-precio" placeholder="Ej: 79.900" inputmode="numeric" oninput="formatInput(this); calcVal()">
+        </div>
+        <div class="form-group">
+          <label for="val-desc">Monto del descuento (CLP $)</label>
+          <input type="text" id="val-desc" placeholder="Ej: 10.000" inputmode="numeric" oninput="formatInput(this); calcVal()">
+        </div>
+      </div>
+      <div id="res-val" style="display:none">
+        <div class="desc-result-box">
+          <div style="font-size:.9rem; opacity:.85;">Precio final</div>
+          <div class="desc-main-val" id="val-final">$0</div>
+          <div class="saving-badge" id="val-badge">0% de descuento</div>
+          <div class="desc-sub-grid" style="margin-top:16px">
+            <div class="desc-sub"><div class="dv" id="val-porc">0%</div><div class="dl">% de descuento</div></div>
+            <div class="desc-sub"><div class="dv" id="val-precio-show">$0</div><div class="dl">Precio original</div></div>
+            <div class="desc-sub"><div class="dv" id="val-ahorro-show">$0</div><div class="dl">Ahorro</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pestaña 3: calcular % -->
+    <div class="tab-section" id="tab-rev">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="rev-original">Precio original (CLP $)</label>
+          <input type="text" id="rev-original" placeholder="Ej: 89.900" inputmode="numeric" oninput="formatInput(this); calcRev()">
+        </div>
+        <div class="form-group">
+          <label for="rev-final">Precio final pagado (CLP $)</label>
+          <input type="text" id="rev-final" placeholder="Ej: 63.900" inputmode="numeric" oninput="formatInput(this); calcRev()">
+        </div>
+      </div>
+      <div id="res-rev" style="display:none">
+        <div class="desc-result-box">
+          <div style="font-size:.9rem; opacity:.85;">Porcentaje de descuento</div>
+          <div class="desc-main-val" id="rev-porc">0%</div>
+          <div class="desc-sub-grid" style="margin-top:16px">
+            <div class="desc-sub"><div class="dv" id="rev-ahorro">$0</div><div class="dl">Ahorro en pesos</div></div>
+            <div class="desc-sub"><div class="dv" id="rev-orig-show">$0</div><div class="dl">Precio original</div></div>
+            <div class="desc-sub"><div class="dv" id="rev-final-show">$0</div><div class="dl">Precio pagado</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pestaña 4: múltiples -->
+    <div class="tab-section" id="tab-multi">
+      <p style="font-size:.88rem; color:var(--text-muted); margin-bottom:16px;">Aplica hasta 3 descuentos sucesivos (ej: descuento de tienda + cupón + descuento socio)</p>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="mul-precio">Precio original (CLP $)</label>
+          <input type="text" id="mul-precio" placeholder="Ej: 120.000" inputmode="numeric" oninput="formatInput(this); calcMulti()">
+        </div>
+        <div class="form-group">
+          <label for="mul-d1">1er descuento (%)</label>
+          <input type="number" id="mul-d1" placeholder="Ej: 20" min="0" max="100" oninput="calcMulti()">
+        </div>
+        <div class="form-group">
+          <label for="mul-d2">2do descuento (%) — opcional</label>
+          <input type="number" id="mul-d2" placeholder="Ej: 10" min="0" max="100" oninput="calcMulti()">
+        </div>
+        <div class="form-group">
+          <label for="mul-d3">3er descuento (%) — opcional</label>
+          <input type="number" id="mul-d3" placeholder="Ej: 5" min="0" max="100" oninput="calcMulti()">
+        </div>
+      </div>
+      <div id="res-multi" style="display:none">
+        <div class="desc-result-box">
+          <div style="font-size:.9rem; opacity:.85;">Precio final</div>
+          <div class="desc-main-val" id="mul-final">$0</div>
+          <div class="saving-badge" id="mul-badge">0% descuento total</div>
+          <div class="desc-sub-grid" style="margin-top:16px">
+            <div class="desc-sub"><div class="dv" id="mul-total-porc">0%</div><div class="dl">Descuento total efectivo</div></div>
+            <div class="desc-sub"><div class="dv" id="mul-ahorro">$0</div><div class="dl">Total ahorrado</div></div>
+            <div class="desc-sub"><div class="dv" id="mul-orig">$0</div><div class="dl">Precio original</div></div>
+          </div>
+        </div>
+        <div id="mul-steps" style="margin-top:14px; font-size:.85rem; color:var(--text-muted);"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="card">
+    <h2>Tabla de referencia rápida: descuentos más comunes</h2>
+    <p style="color:var(--text-muted); font-size:.9rem; margin-bottom:12px;">Precio original de ejemplo: <strong>$50.000</strong></p>
+    <div style="overflow-x:auto">
+      <table class="data-table">
+        <thead><tr><th>Descuento</th><th>Precio final</th><th>Ahorro</th></tr></thead>
+        <tbody>
+          <tr><td>5%</td><td>$47.500</td><td>$2.500</td></tr>
+          <tr><td>10%</td><td>$45.000</td><td>$5.000</td></tr>
+          <tr><td>15%</td><td>$42.500</td><td>$7.500</td></tr>
+          <tr><td>20%</td><td>$40.000</td><td>$10.000</td></tr>
+          <tr><td>25%</td><td>$37.500</td><td>$12.500</td></tr>
+          <tr><td>30%</td><td>$35.000</td><td>$15.000</td></tr>
+          <tr><td>40%</td><td>$30.000</td><td>$20.000</td></tr>
+          <tr><td>50%</td><td>$25.000</td><td>$25.000</td></tr>
+          <tr><td>60%</td><td>$20.000</td><td>$30.000</td></tr>
+          <tr><td>70%</td><td>$15.000</td><td>$35.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="prose">
+    <h2>¿Cómo calcular descuentos en Chile?</h2>
+    <p>Calcular un descuento es sencillo con la fórmula correcta. Existen tres cálculos principales que puedes necesitar en tu día a día como consumidor chileno: calcular el precio final después de aplicar un descuento en porcentaje, calcular el porcentaje de descuento que te ofrecen, o aplicar múltiples descuentos sucesivos.</p>
+
+    <h3>Fórmula para calcular el precio final con descuento %</h3>
+    <p>La fórmula básica para calcular el precio con descuento es:</p>
+    <div class="tip-box">
+      <strong>Precio final = Precio original × (1 - descuento/100)</strong><br>
+      Ejemplo: $79.900 con 25% de descuento → $79.900 × 0,75 = <strong>$59.925</strong>
+    </div>
+
+    <h3>Fórmula para calcular el % de descuento</h3>
+    <p>Cuando sabes el precio original y el precio final y quieres saber cuánto te rebajaron:</p>
+    <div class="tip-box">
+      <strong>% Descuento = ((Precio original − Precio final) / Precio original) × 100</strong><br>
+      Ejemplo: Precio original $89.990, precio pagado $62.993 → descuento = 30%
+    </div>
+
+    <h3>Descuentos sucesivos (múltiples descuentos)</h3>
+    <p>Es un error común sumar los porcentajes de descuentos sucesivos. Si tienes un 20% de descuento más un 10% adicional, <strong>no es un 30% de descuento</strong>. Los descuentos se aplican en cadena:</p>
+    <p>Precio → aplicar 20% → resultado → aplicar 10% → precio final</p>
+    <p>Ejemplo: $100.000 con 20% = $80.000, luego $80.000 con 10% = $72.000. El descuento total efectivo es 28%, no 30%.</p>
+
+    <h3>Descuentos en el CyberDay y Black Friday Chile</h3>
+    <p>Durante los grandes eventos de descuento en Chile como el <strong>CyberDay</strong> (organizado por la Cámara de Comercio de Santiago) y el <strong>Black Friday</strong>, los descuentos promocionados van entre el 10% y el 70%. Sin embargo, es importante verificar el precio anterior real del producto para confirmar que el descuento sea genuino.</p>
+
+    <h3>IVA y descuentos en Chile</h3>
+    <p>En Chile, los precios al público incluyen el IVA del 19%. Los descuentos se aplican sobre el precio con IVA (precio bruto). Si necesitas calcular el IVA de un precio descontado, usa nuestra <a href="calculadora-iva.html">Calculadora de IVA</a>.</p>
+
+    <div class="tip-box">
+      <strong>Consejo:</strong> Cuando compares descuentos entre tiendas, asegúrate de comparar el precio final (con IVA incluido) y no solo el porcentaje de descuento. Un 40% de descuento sobre un producto más caro puede ser peor negocio que un 20% de descuento sobre un producto más barato.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Preguntas Frecuentes sobre Descuentos</h2>
+    <div class="faq-item">
+      <button class="faq-q">¿Cómo calculo el precio final con descuento? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Multiplica el precio original por (1 - porcentaje/100). Por ejemplo: $50.000 con 20% de descuento = $50.000 × 0,80 = $40.000. Con nuestra calculadora solo ingresas el precio y el porcentaje y obtienes el resultado automáticamente.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Cómo calculo el porcentaje de descuento entre dos precios? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Divide la diferencia entre los precios por el precio original y multiplica por 100. Fórmula: ((Precio original - Precio final) / Precio original) × 100. Por ejemplo: precio original $80.000, precio final $56.000 → (($80.000 - $56.000) / $80.000) × 100 = 30% de descuento.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Un 20% + 10% es igual a 30% de descuento? <span class="faq-icon">+</span></button>
+      <div class="faq-a">No. Los descuentos sucesivos no se suman directamente. Un 20% seguido de un 10% equivale a un descuento total efectivo del 28% (no 30%). Esto es porque el segundo descuento se aplica sobre el precio ya rebajado, no sobre el precio original.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Los precios en Chile incluyen IVA? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Sí. En Chile, la Ley del Consumidor obliga a informar los precios al público con el IVA del 19% incluido. Los descuentos se aplican sobre el precio con IVA. Solo en transacciones B2B o facturas se trabaja con precios netos (sin IVA).</div>
+    </div>
+  </div>
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand"><a href="index.html" class="footer-logo"><span style="font-size:1.4rem">🇨🇱</span><span>Calculadoras<strong>Chile</strong></span></a><p>Herramientas financieras gratuitas para Chile.</p></div>
+    <div class="footer-col"><h4>Calculadoras</h4><a href="sueldo-liquido.html">Sueldo Líquido</a><a href="calculadora-finiquito.html">Finiquito</a><a href="calculadora-vacaciones.html">Vacaciones</a><a href="calculadora-afp.html">AFP</a></div>
+    <div class="footer-col"><h4>Recursos</h4><a href="blog/">Blog</a><a href="uf-calculadora.html">UF</a><a href="credito-hipotecario.html">Hipotecario</a></div>
+    <div class="footer-col"><h4>Empresa</h4><a href="sobre-nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 CalculadorasChile.cl</span><span>Cálculo referencial. Los precios son informativos.</span></div>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  function switchTab(id) {
+    document.querySelectorAll('.desc-tab').forEach((t,i) => t.classList.toggle('active', ['pct','val','rev','multi'][i] === id));
+    document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+
+  function calcPct() {
+    const precio = parseNum(document.getElementById('pct-precio').value);
+    const porc   = parseFloat(document.getElementById('pct-porc').value) || 0;
+    if (!precio || !porc) { document.getElementById('res-pct').style.display='none'; return; }
+    const final = precio * (1 - porc / 100);
+    const ahorro = precio - final;
+    document.getElementById('pct-final').textContent    = formatCLP(final);
+    document.getElementById('pct-ahorro').textContent   = formatCLP(ahorro);
+    document.getElementById('pct-precio-show').textContent = formatCLP(precio);
+    document.getElementById('pct-porc-show').textContent   = porc.toFixed(1) + '%';
+    document.getElementById('pct-badge').textContent    = 'Ahorras ' + formatCLP(ahorro);
+    document.getElementById('res-pct').style.display = 'block';
+  }
+
+  function calcVal() {
+    const precio = parseNum(document.getElementById('val-precio').value);
+    const desc   = parseNum(document.getElementById('val-desc').value);
+    if (!precio || !desc) { document.getElementById('res-val').style.display='none'; return; }
+    const final = Math.max(0, precio - desc);
+    const porc  = (desc / precio) * 100;
+    document.getElementById('val-final').textContent       = formatCLP(final);
+    document.getElementById('val-porc').textContent        = porc.toFixed(1) + '%';
+    document.getElementById('val-precio-show').textContent = formatCLP(precio);
+    document.getElementById('val-ahorro-show').textContent = formatCLP(desc);
+    document.getElementById('val-badge').textContent       = porc.toFixed(1) + '% de descuento';
+    document.getElementById('res-val').style.display = 'block';
+  }
+
+  function calcRev() {
+    const orig  = parseNum(document.getElementById('rev-original').value);
+    const final = parseNum(document.getElementById('rev-final').value);
+    if (!orig || !final) { document.getElementById('res-rev').style.display='none'; return; }
+    const porc   = ((orig - final) / orig) * 100;
+    const ahorro = orig - final;
+    document.getElementById('rev-porc').textContent       = porc.toFixed(1) + '%';
+    document.getElementById('rev-ahorro').textContent     = formatCLP(ahorro);
+    document.getElementById('rev-orig-show').textContent  = formatCLP(orig);
+    document.getElementById('rev-final-show').textContent = formatCLP(final);
+    document.getElementById('res-rev').style.display = 'block';
+  }
+
+  function calcMulti() {
+    const precio = parseNum(document.getElementById('mul-precio').value);
+    const d1 = parseFloat(document.getElementById('mul-d1').value) || 0;
+    const d2 = parseFloat(document.getElementById('mul-d2').value) || 0;
+    const d3 = parseFloat(document.getElementById('mul-d3').value) || 0;
+    if (!precio || !d1) { document.getElementById('res-multi').style.display='none'; return; }
+
+    let p = precio;
+    const steps = [];
+    if (d1) { p = p * (1 - d1/100); steps.push(`Después del ${d1}%: ${formatCLP(p)}`); }
+    if (d2) { p = p * (1 - d2/100); steps.push(`Después del ${d2}%: ${formatCLP(p)}`); }
+    if (d3) { p = p * (1 - d3/100); steps.push(`Después del ${d3}%: ${formatCLP(p)}`); }
+
+    const totalPorc = ((precio - p) / precio) * 100;
+    const ahorro = precio - p;
+
+    document.getElementById('mul-final').textContent      = formatCLP(p);
+    document.getElementById('mul-total-porc').textContent = totalPorc.toFixed(1) + '%';
+    document.getElementById('mul-ahorro').textContent     = formatCLP(ahorro);
+    document.getElementById('mul-orig').textContent       = formatCLP(precio);
+    document.getElementById('mul-badge').textContent      = totalPorc.toFixed(1) + '% descuento total';
+    document.getElementById('mul-steps').innerHTML        = '<strong>Pasos:</strong> ' + steps.join(' → ');
+    document.getElementById('res-multi').style.display = 'block';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora IVA Chile 2026 | Agregar o Extraer IVA 19% al Instante</title>
+  <meta name="description" content="Calculadora de IVA gratuita para Chile. Agrega o extrae el 19% de IVA a cualquier monto en pesos chilenos. Herramienta rápida y precisa para empresas y personas.">
+  <meta name="keywords" content="calculadora IVA Chile, calcular IVA 19%, precio con IVA Chile, extraer IVA precio, IVA neto bruto Chile 2026">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadoras-chile-5sbh.vercel.app/calculadora-iva.html">
+  <meta property="og:title" content="Calculadora IVA Chile 2026 | 19% al Instante">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987300357303329" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "¿Cuánto es el IVA en Chile?", "acceptedAnswer": { "@type": "Answer", "text": "El IVA (Impuesto al Valor Agregado) en Chile es del 19% sobre el precio neto. Es uno de los impuestos más importantes del sistema tributario chileno." } },
+      { "@type": "Question", "name": "¿Cómo calculo el precio con IVA?", "acceptedAnswer": { "@type": "Answer", "text": "Para agregar IVA, multiplica el precio neto por 1,19. Por ejemplo, si el precio neto es $10.000, el precio con IVA es $10.000 × 1,19 = $11.900." } },
+      { "@type": "Question", "name": "¿Cómo extrae el IVA de un precio?", "acceptedAnswer": { "@type": "Answer", "text": "Para extraer el IVA de un precio que ya lo incluye, divide el precio bruto por 1,19. Por ejemplo, si el precio con IVA es $11.900, el neto es $11.900 / 1,19 = $10.000." } }
+    ]
+  }
+  </script>
+  <style>
+    .page-hero { background:linear-gradient(135deg,#7F1D1D 0%,#991B1B 50%,#DC2626 100%); }
+    .iva-toggle { display:flex; background:var(--bg); border:2px solid var(--border); border-radius:99px; padding:4px; gap:4px; margin-bottom:24px; max-width:320px; }
+    .iva-btn { flex:1; padding:10px 16px; border:none; border-radius:99px; font-size:.9rem; font-weight:700; cursor:pointer; background:transparent; color:var(--text-muted); transition:all .2s; font-family:inherit; }
+    .iva-btn.active { background:var(--primary); color:#fff; box-shadow:0 2px 8px rgba(37,99,235,.25); }
+    .iva-result { background:linear-gradient(135deg,#DC2626,#EF4444); color:#fff; border-radius:var(--radius); padding:28px; text-align:center; margin-top:20px; }
+    .iva-result .ir-label { font-size:.85rem; opacity:.85; margin-bottom:6px; }
+    .iva-result .ir-val { font-size:clamp(1.8rem,5vw,2.8rem); font-weight:800; }
+    .iva-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.2); font-size:.9rem; }
+    .iva-row:last-child { border-bottom:none; }
+    .iva-row .lbl { opacity:.85; }
+    .iva-row .val { font-weight:700; }
+    .ref-table { width:100%; border-collapse:collapse; font-size:.9rem; }
+    .ref-table th { background:#FEE2E2; color:#991B1B; padding:10px 14px; text-align:left; font-weight:600; }
+    .ref-table td { padding:10px 14px; border-bottom:1px solid var(--border); }
+    .ref-table tr:last-child td { border-bottom:none; }
+    .ref-table tr:hover td { background:#FFF8F8; }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🇨🇱</span><span class="logo-text">Calculadoras<strong>Chile</strong></span></a>
+    <nav class="main-nav" id="main-nav">
+      <div class="nav-item has-dropdown">
+        <a href="index.html#calculadoras" class="nav-link active">Calculadoras ▾</a>
+        <div class="dropdown-menu">
+          <a href="sueldo-liquido.html">💼 Sueldo Líquido</a>
+          <a href="uf-calculadora.html">📊 Calculadora UF</a>
+          <a href="credito-hipotecario.html">🏠 Crédito Hipotecario</a>
+          <a href="calculadora-iva.html">🧾 Calculadora IVA</a>
+          <a href="calculadora-utm.html">📐 UTM a CLP</a>
+          <a href="calculadora-vacaciones.html">🌴 Vacaciones</a>
+          <a href="calculadora-finiquito.html">📋 Finiquito</a>
+          <a href="calculadora-interes-compuesto.html">💹 Interés Compuesto</a>
+          <a href="calculadora-descuentos.html">🏷️ Descuentos</a>
+          <a href="conversor-dolar.html">💵 Conversor Dólar</a>
+          <a href="calculadora-afp.html">🏦 Calculadora AFP</a>
+        </div>
+      </div>
+      <a href="blog/" class="nav-link">Blog</a>
+      <a href="sobre-nosotros.html" class="nav-link">Nosotros</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="breadcrumbs">
+  <div class="bc-inner">
+    <a href="index.html">Inicio</a><span class="sep">›</span>
+    <a href="index.html#calculadoras">Calculadoras</a><span class="sep">›</span>
+    <span class="current">Calculadora IVA</span>
+  </div>
+</div>
+
+<header class="page-hero" style="padding:48px 20px 40px; text-align:center;">
+  <div class="container">
+    <h1 style="font-size:clamp(1.6rem,4vw,2.4rem); font-weight:800; margin-bottom:10px; color:#fff;">Calculadora de IVA Chile 2026</h1>
+    <p style="font-size:1.05rem; opacity:.88; max-width:560px; margin:0 auto; color:#fff;">Agrega o extrae el 19% de IVA a cualquier monto en pesos chilenos de forma instantánea.</p>
+  </div>
+</header>
+
+<main class="container" style="padding-top:28px; padding-bottom:48px">
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="card">
+    <h2>🧾 Calculadora IVA</h2>
+
+    <div class="iva-toggle">
+      <button class="iva-btn active" id="btn-agregar" onclick="setModo('agregar')">➕ Agregar IVA</button>
+      <button class="iva-btn" id="btn-extraer" onclick="setModo('extraer')">➖ Extraer IVA</button>
+    </div>
+
+    <div class="form-group">
+      <label for="monto-iva" id="lbl-monto">Precio neto (sin IVA)</label>
+      <input type="text" id="monto-iva" placeholder="Ej: 100.000" inputmode="numeric" oninput="calcIVA(); formatInput(this)">
+    </div>
+
+    <div class="form-group">
+      <label for="tasa-iva">Tasa de IVA</label>
+      <select id="tasa-iva" onchange="calcIVA()">
+        <option value="19" selected>19% — IVA estándar Chile</option>
+        <option value="10">10% — IVA reducido (referencia)</option>
+        <option value="0">0% — Exento de IVA</option>
+      </select>
+    </div>
+
+    <div class="iva-result" id="iva-result" style="display:none">
+      <div class="ir-label" id="ir-label-top">Precio con IVA</div>
+      <div class="ir-val" id="ir-total">—</div>
+      <div style="margin-top:16px">
+        <div class="iva-row"><span class="lbl" id="ir-lbl-neto">Precio neto</span><span class="val" id="ir-neto">—</span></div>
+        <div class="iva-row"><span class="lbl">IVA (<span id="ir-tasa-lbl">19%</span>)</span><span class="val" id="ir-iva">—</span></div>
+        <div class="iva-row" style="font-size:1rem"><span class="lbl" id="ir-lbl-total">Precio final con IVA</span><span class="val" id="ir-final">—</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLA REFERENCIA RÁPIDA -->
+  <div class="card">
+    <h2>📋 Tabla de referencia IVA 19%</h2>
+    <div class="table-wrap">
+      <table class="ref-table" id="ref-iva-tabla">
+        <thead><tr><th>Precio neto</th><th>IVA (19%)</th><th>Precio con IVA</th></tr></thead>
+        <tbody id="ref-iva-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- INFORMACIÓN SEO -->
+  <div class="prose">
+    <h2>¿Qué es el IVA en Chile?</h2>
+    <p>El <strong>IVA (Impuesto al Valor Agregado)</strong> es el principal impuesto al consumo en Chile. Con una tasa del <strong>19%</strong>, se aplica sobre la mayoría de los bienes y servicios vendidos en el país. Es un impuesto indirecto que pagan los consumidores finales, pero que las empresas recopilan y transfieren al SII (Servicio de Impuestos Internos).</p>
+
+    <h3>¿Cuándo aplica el IVA en Chile?</h3>
+    <p>El IVA del 19% aplica a la mayoría de las ventas de bienes y prestaciones de servicios en Chile. Sin embargo, existen algunas excepciones importantes:</p>
+    <ul>
+      <li><strong>Exentos de IVA:</strong> Servicios educacionales, servicios médicos de salud, arriendos de inmuebles sin amoblado, intereses y dividendos, ciertos servicios profesionales.</li>
+      <li><strong>IVA reducido:</strong> Algunas operaciones especiales como el IVA a la construcción pueden tener tasas diferentes.</li>
+      <li><strong>Afectos a IVA:</strong> Compraventa de bienes, servicios en general, importaciones, arrendamiento de bienes muebles, entre otros.</li>
+    </ul>
+
+    <h3>¿Cómo funciona el IVA?</h3>
+    <p>El IVA funciona como un sistema de créditos y débitos. Las empresas cobran IVA a sus clientes (débito fiscal) y pagan IVA a sus proveedores (crédito fiscal). Al final del período (generalmente mensual), declaran y pagan la diferencia al SII.</p>
+    <p>Los consumidores finales son quienes efectivamente pagan el IVA, ya que no tienen crédito fiscal que rebajar.</p>
+
+    <h3>¿Cómo calcular el IVA manualmente?</h3>
+    <p><strong>Para agregar IVA (precio neto → precio con IVA):</strong></p>
+    <p>Precio con IVA = Precio neto × 1,19</p>
+    <p>Ejemplo: $50.000 neto × 1,19 = <strong>$59.500 con IVA</strong></p>
+    <p><strong>Para extraer IVA (precio con IVA → precio neto):</strong></p>
+    <p>Precio neto = Precio con IVA ÷ 1,19</p>
+    <p>Ejemplo: $59.500 ÷ 1,19 = <strong>$50.000 neto</strong></p>
+    <p>El monto del IVA = Precio con IVA − Precio neto = $59.500 − $50.000 = <strong>$9.500</strong></p>
+  </div>
+
+  <div class="card">
+    <h2>Preguntas Frecuentes sobre el IVA en Chile</h2>
+    <div class="faq-item">
+      <button class="faq-q">¿Cuánto es el IVA en Chile en 2026? <span class="faq-icon">+</span></button>
+      <div class="faq-a">El IVA en Chile es del 19% y no ha cambiado en décadas. Esta tasa aplica sobre la mayoría de los bienes y servicios comercializados en el país.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Qué es una boleta y una factura en Chile? <span class="faq-icon">+</span></button>
+      <div class="faq-a">La boleta se emite a consumidores finales e incluye el IVA en el precio total sin mostrarlo por separado. La factura se emite entre empresas y muestra el neto y el IVA separados, permitiendo a la empresa compradora usar el IVA como crédito fiscal. En 2023, Chile implementó la boleta electrónica obligatoria.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Las personas naturales deben cobrar IVA? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Depende de la actividad. Las personas naturales que realizan actividades gravadas con IVA (como vender bienes o ciertos servicios) deben cobrar y pagar IVA. Los trabajadores independientes que emiten honorarios (boletas de honorarios) generalmente no cobran IVA por sus servicios personales.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Los arriendos pagan IVA en Chile? <span class="faq-icon">+</span></button>
+      <div class="faq-a">El arriendo de inmuebles amoblados o inmuebles comerciales sí puede estar afecto a IVA. El arriendo de viviendas sin amoblar está exento de IVA. El arriendo de oficinas, locales comerciales y bodegas generalmente paga IVA si el arrendador es contribuyente de IVA.</div>
+    </div>
+  </div>
+
+  <div class="ad-slot" style="margin-bottom:16px">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div style="text-align:center; padding:8px 0">
+    <p style="color:var(--text-muted); font-size:.875rem; margin-bottom:16px">¿Necesitas otras calculadoras?</p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center">
+      <a href="sueldo-liquido.html" class="btn btn-outline">💼 Sueldo Líquido</a>
+      <a href="calculadora-utm.html" class="btn btn-outline">📐 UTM a CLP</a>
+      <a href="calculadora-descuentos.html" class="btn btn-outline">🏷️ Descuentos</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo"><span style="font-size:1.4rem">🇨🇱</span><span>Calculadoras<strong>Chile</strong></span></a>
+      <p>Portal de herramientas financieras gratuitas para Chile.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Calculadoras</h4>
+      <a href="sueldo-liquido.html">Sueldo Líquido</a>
+      <a href="uf-calculadora.html">Calculadora UF</a>
+      <a href="credito-hipotecario.html">Crédito Hipotecario</a>
+      <a href="calculadora-iva.html">Calculadora IVA</a>
+      <a href="calculadora-utm.html">UTM a CLP</a>
+    </div>
+    <div class="footer-col"><h4>Recursos</h4><a href="blog/">Blog Financiero</a><a href="conversor-dolar.html">Conversor Dólar</a><a href="calculadora-afp.html">AFP</a></div>
+    <div class="footer-col"><h4>Empresa</h4><a href="sobre-nosotros.html">Sobre Nosotros</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 CalculadorasChile.cl</span><span>Los cálculos son referenciales. Consulta con un contador para decisiones tributarias.</span></div>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  let modo = 'agregar';
+  const IVA_REF = [5000,10000,25000,50000,100000,200000,500000,1000000,5000000,10000000];
+
+  function setModo(m) {
+    modo = m;
+    document.getElementById('btn-agregar').classList.toggle('active', m==='agregar');
+    document.getElementById('btn-extraer').classList.toggle('active', m==='extraer');
+    document.getElementById('lbl-monto').textContent = m === 'agregar' ? 'Precio neto (sin IVA)' : 'Precio con IVA incluido';
+    document.getElementById('monto-iva').placeholder = m === 'agregar' ? 'Ej: 100.000 (precio sin IVA)' : 'Ej: 119.000 (precio con IVA)';
+    document.getElementById('ir-lbl-neto').textContent = m === 'agregar' ? 'Precio neto' : 'Precio con IVA';
+    document.getElementById('ir-lbl-total').textContent = m === 'agregar' ? 'Precio final con IVA' : 'Precio neto (sin IVA)';
+    document.getElementById('ir-label-top').textContent = m === 'agregar' ? 'Precio con IVA' : 'Precio neto';
+    calcIVA();
+  }
+
+  function calcIVA() {
+    const raw = parseNum(document.getElementById('monto-iva').value);
+    const tasa = parseFloat(document.getElementById('tasa-iva').value) / 100;
+    const res = document.getElementById('iva-result');
+    if (!raw || raw <= 0) { res.style.display='none'; return; }
+
+    let neto, ivaAmt, total;
+    if (modo === 'agregar') {
+      neto    = raw;
+      ivaAmt  = Math.round(neto * tasa);
+      total   = neto + ivaAmt;
+      document.getElementById('ir-neto').textContent  = formatCLP(neto);
+      document.getElementById('ir-iva').textContent   = formatCLP(ivaAmt);
+      document.getElementById('ir-final').textContent = formatCLP(total);
+      document.getElementById('ir-total').textContent = formatCLP(total);
+    } else {
+      total   = raw;
+      neto    = Math.round(raw / (1 + tasa));
+      ivaAmt  = total - neto;
+      document.getElementById('ir-neto').textContent  = formatCLP(total);
+      document.getElementById('ir-iva').textContent   = formatCLP(ivaAmt);
+      document.getElementById('ir-final').textContent = formatCLP(neto);
+      document.getElementById('ir-total').textContent = formatCLP(neto);
+    }
+    document.getElementById('ir-tasa-lbl').textContent = (tasa * 100).toFixed(0) + '%';
+    res.style.display = 'block';
+  }
+
+  // Tabla de referencia rápida
+  function buildRefTable() {
+    const tbody = document.getElementById('ref-iva-body');
+    tbody.innerHTML = IVA_REF.map(n => `
+      <tr>
+        <td>${formatCLP(n)}</td>
+        <td style="color:#DC2626">${formatCLP(Math.round(n*0.19))}</td>
+        <td style="font-weight:700">${formatCLP(Math.round(n*1.19))}</td>
+      </tr>
+    `).join('');
+  }
+  buildRefTable();
+</script>
+</body>
+</html>

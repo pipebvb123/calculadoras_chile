@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Finiquito Chile 2026 | Liquidación Laboral</title>
+  <meta name="description" content="Calcula el monto de tu finiquito en Chile 2026 gratis. Incluye indemnización por años, vacaciones proporcionales y meses pendientes según la causal de término.">
+  <meta name="keywords" content="calculadora finiquito Chile 2026, finiquito laboral Chile, indemnización años servicio Chile, cálculo liquidación trabajo Chile, finiquito despido renuncia">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadoras-chile-5sbh.vercel.app/calculadora-finiquito.html">
+  <link rel="stylesheet" href="css/styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987300357303329" crossorigin="anonymous"></script>
+  <style>
+    .page-hero { background:linear-gradient(135deg,#7C2D12,#C2410C,#F97316); }
+    .finiquito-result { background:linear-gradient(135deg,#EA580C,#F97316); color:#fff; border-radius:var(--radius); padding:24px; margin-top:20px; }
+    .fr-total { font-size:clamp(2rem,5vw,2.8rem); font-weight:800; margin:8px 0; }
+    .fr-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.2); font-size:.9rem; }
+    .fr-row:last-child { border-bottom:none; font-weight:800; font-size:1rem; }
+    .fr-row .lbl { opacity:.85; }
+    .fr-row .val { font-weight:700; }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🇨🇱</span><span class="logo-text">Calculadoras<strong>Chile</strong></span></a>
+    <nav class="main-nav" id="main-nav">
+      <div class="nav-item has-dropdown">
+        <a href="index.html#calculadoras" class="nav-link active">Calculadoras ▾</a>
+        <div class="dropdown-menu">
+          <a href="sueldo-liquido.html">💼 Sueldo Líquido</a>
+          <a href="uf-calculadora.html">📊 Calculadora UF</a>
+          <a href="credito-hipotecario.html">🏠 Crédito Hipotecario</a>
+          <a href="calculadora-iva.html">🧾 Calculadora IVA</a>
+          <a href="calculadora-utm.html">📐 UTM a CLP</a>
+          <a href="calculadora-vacaciones.html">🌴 Vacaciones</a>
+          <a href="calculadora-finiquito.html">📋 Finiquito</a>
+          <a href="calculadora-interes-compuesto.html">💹 Interés Compuesto</a>
+          <a href="calculadora-descuentos.html">🏷️ Descuentos</a>
+          <a href="conversor-dolar.html">💵 Conversor Dólar</a>
+          <a href="calculadora-afp.html">🏦 Calculadora AFP</a>
+        </div>
+      </div>
+      <a href="blog/" class="nav-link">Blog</a>
+      <a href="sobre-nosotros.html" class="nav-link">Nosotros</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="breadcrumbs">
+  <div class="bc-inner"><a href="index.html">Inicio</a><span class="sep">›</span><a href="index.html#calculadoras">Calculadoras</a><span class="sep">›</span><span class="current">Calculadora Finiquito</span></div>
+</div>
+
+<header class="page-hero" style="padding:48px 20px 40px; text-align:center;">
+  <div class="container">
+    <h1 style="color:#fff; font-size:clamp(1.6rem,4vw,2.4rem); font-weight:800; margin-bottom:10px;">Calculadora de Finiquito Chile 2026</h1>
+    <p style="color:#fff; opacity:.88; font-size:1.05rem; max-width:560px; margin:0 auto;">Estima el monto de tu finiquito según días trabajados, causal de término y tu sueldo.</p>
+  </div>
+</header>
+
+<main class="container" style="padding-top:28px; padding-bottom:48px">
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="card">
+    <h2>📋 Calcular mi finiquito</h2>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="fin-sueldo">Sueldo bruto mensual (CLP $)</label>
+        <input type="text" id="fin-sueldo" placeholder="Ej: 1.500.000" inputmode="numeric" oninput="formatInput(this)">
+      </div>
+      <div class="form-group">
+        <label for="fin-anos">Años completos de servicio</label>
+        <input type="number" id="fin-anos" placeholder="Ej: 3" min="0" max="50" value="0">
+      </div>
+      <div class="form-group">
+        <label for="fin-meses-extra">Meses adicionales (fracción del último año)</label>
+        <input type="number" id="fin-meses-extra" placeholder="Ej: 4" min="0" max="11" value="0">
+      </div>
+      <div class="form-group">
+        <label for="fin-dias-vacaciones">Días de vacaciones pendientes</label>
+        <input type="number" id="fin-dias-vacaciones" placeholder="Ej: 15" min="0" value="0">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fin-causal">Causal de término del contrato</label>
+      <select id="fin-causal">
+        <option value="necesidades">Necesidades de la empresa (Art. 161) — Con indemnización</option>
+        <option value="renuncia">Renuncia voluntaria — Sin indemnización por años</option>
+        <option value="mutuo">Mutuo acuerdo — Negociable</option>
+        <option value="vencimiento">Vencimiento de contrato a plazo fijo</option>
+        <option value="fortuito">Caso fortuito o fuerza mayor (Art. 159 N°6)</option>
+      </select>
+    </div>
+
+    <button class="btn btn-block" style="background:#EA580C; color:#fff; font-weight:700; font-size:1.1rem; border:none; cursor:pointer; border-radius:8px; padding:15px; transition:background .2s" onclick="calcFiniquito()">Calcular Finiquito →</button>
+
+    <div id="fin-results" style="display:none">
+      <div class="finiquito-result">
+        <div class="fr-row"><span class="lbl">Sueldo mensual bruto</span><span class="val" id="fr-sueldo">—</span></div>
+        <div class="fr-row" id="fr-row-indemnizacion"><span class="lbl">Indemnización por años de servicio</span><span class="val" id="fr-indemnizacion">—</span></div>
+        <div class="fr-row" id="fr-row-aviso"><span class="lbl">Indemnización sustitutiva aviso previo</span><span class="val" id="fr-aviso">—</span></div>
+        <div class="fr-row"><span class="lbl">Vacaciones pendientes (<span id="fr-dias-vac">0</span> días)</span><span class="val" id="fr-vacaciones">—</span></div>
+        <div class="fr-row"><span class="lbl">Sueldo meses proporcionales</span><span class="val" id="fr-proporcional">$0</span></div>
+        <div class="fr-row" style="margin-top:8px"><span class="lbl" style="font-size:1rem; font-weight:800">TOTAL ESTIMADO FINIQUITO</span><span class="val" id="fr-total" style="font-size:1.2rem">—</span></div>
+      </div>
+      <p style="font-size:.78rem; color:var(--text-muted); text-align:center; margin-top:10px" id="fr-nota"></p>
+    </div>
+  </div>
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="prose">
+    <h2>¿Qué es el finiquito en Chile?</h2>
+    <p>El <strong>finiquito</strong> es el documento legal que pone término al contrato de trabajo en Chile y liquida todos los derechos pendientes del trabajador. Debe ser firmado por ambas partes (empleador y trabajador) ante un ministro de fe (notario público, inspector del trabajo, etc.).</p>
+
+    <h3>¿Qué incluye un finiquito en Chile?</h3>
+    <p>El contenido del finiquito depende de la causal de término, pero generalmente incluye:</p>
+    <ul>
+      <li><strong>Remuneraciones pendientes:</strong> Sueldos de los días trabajados en el último mes.</li>
+      <li><strong>Vacaciones proporcionales:</strong> Los días de vacaciones acumulados no tomados.</li>
+      <li><strong>Indemnización por años de servicio:</strong> Solo en ciertos casos (despido por necesidades de la empresa o desahucio).</li>
+      <li><strong>Indemnización sustitutiva del aviso previo:</strong> Un mes de sueldo si no se dio aviso con 30 días de anticipación.</li>
+      <li><strong>Gratificación proporcional:</strong> Si aplica y no fue pagada.</li>
+    </ul>
+
+    <h3>Causales de término y sus indemnizaciones</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Causal</th><th>Artículo</th><th>Indemnización por años</th><th>Aviso previo</th></tr></thead>
+        <tbody>
+          <tr><td>Necesidades de la empresa</td><td>Art. 161</td><td>✅ 1 mes por año (tope 11)</td><td>✅ 30 días</td></tr>
+          <tr><td>Renuncia voluntaria</td><td>Art. 159 N°2</td><td>❌ No corresponde</td><td>✅ 30 días</td></tr>
+          <tr><td>Mutuo acuerdo</td><td>Art. 159 N°1</td><td>⚠️ Negociable</td><td>—</td></tr>
+          <tr><td>Vencimiento plazo fijo</td><td>Art. 159 N°4</td><td>❌ No corresponde</td><td>—</td></tr>
+          <tr><td>Caso fortuito</td><td>Art. 159 N°6</td><td>❌ No corresponde</td><td>—</td></tr>
+          <tr><td>Falta grave (despido)</td><td>Art. 160</td><td>❌ No corresponde</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>¿Cuál es el tope de la indemnización por años?</h3>
+    <p>La indemnización por años de servicio está limitada a un máximo de <strong>11 meses de remuneración</strong>, independientemente de los años trabajados. Además, el sueldo base para calcularla tiene un <strong>tope de 90 UF</strong> (~$3.510.000 con UF a $39.000).</p>
+
+    <div class="tip-box">
+      <strong>Importante:</strong> Esta calculadora entrega una estimación referencial. Para verificar tu finiquito real, consulta con la Inspección del Trabajo (DT.gob.cl) o un abogado laboral. Siempre firma el finiquito ante un ministro de fe.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Preguntas Frecuentes sobre el Finiquito en Chile</h2>
+    <div class="faq-item">
+      <button class="faq-q">¿Cuánto tiempo tengo para firmar el finiquito? <span class="faq-icon">+</span></button>
+      <div class="faq-a">En Chile, el empleador tiene un plazo de 7 días hábiles desde que se pone término al contrato para pagar el finiquito. Si no lo paga en ese plazo, debe pagar intereses y reajustes. El trabajador puede rechazar el finiquito si no está conforme y recurrir a la Inspección del Trabajo.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Puedo negarme a firmar el finiquito? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Sí. Tienes derecho a no firmar el finiquito si no estás de acuerdo con los montos o la causal. En ese caso, debes concurrir a la Inspección del Trabajo para resolver el conflicto. No firmar el finiquito no impide que el contrato termine, pero sí conserva tus derechos para reclamar lo que corresponde.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿La indemnización está sujeta a impuestos? <span class="faq-icon">+</span></button>
+      <div class="faq-a">La indemnización por años de servicio y la sustitutiva del aviso previo están exentas de impuesto a la renta en Chile. Sin embargo, las remuneraciones pendientes (días trabajados del último mes) sí están afectas al impuesto único normal.</div>
+    </div>
+  </div>
+
+  <div class="ad-slot" style="margin-bottom:16px">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand"><a href="index.html" class="footer-logo"><span style="font-size:1.4rem">🇨🇱</span><span>Calculadoras<strong>Chile</strong></span></a><p>Herramientas financieras gratuitas para Chile.</p></div>
+    <div class="footer-col"><h4>Calculadoras</h4><a href="sueldo-liquido.html">Sueldo Líquido</a><a href="calculadora-vacaciones.html">Vacaciones</a><a href="calculadora-finiquito.html">Finiquito</a><a href="calculadora-afp.html">AFP</a></div>
+    <div class="footer-col"><h4>Recursos</h4><a href="blog/">Blog</a><a href="uf-calculadora.html">UF</a><a href="calculadora-iva.html">IVA</a></div>
+    <div class="footer-col"><h4>Empresa</h4><a href="sobre-nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 CalculadorasChile.cl</span><span>Estimación referencial. Consulta a un abogado laboral o a la Inspección del Trabajo.</span></div>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  function calcFiniquito() {
+    const sueldo  = parseNum(document.getElementById('fin-sueldo').value);
+    const anos    = parseInt(document.getElementById('fin-anos').value) || 0;
+    const mesesEx = parseInt(document.getElementById('fin-meses-extra').value) || 0;
+    const diasVac = parseInt(document.getElementById('fin-dias-vacaciones').value) || 0;
+    const causal  = document.getElementById('fin-causal').value;
+
+    if (!sueldo || sueldo < 1) { alert('Por favor ingresa el sueldo bruto mensual.'); return; }
+
+    const sueldoDia   = sueldo / 30;
+    const topeSueldo  = Math.min(sueldo, 3510000); // ~90 UF con UF=39000
+    const tope11meses = Math.min(anos, 11);
+
+    let indemnizacion = 0;
+    let aviso = 0;
+    let nota = '';
+
+    if (causal === 'necesidades') {
+      indemnizacion = topeSueldo * tope11meses;
+      aviso = topeSueldo; // 1 mes sustitutivo
+      nota = `Causal Art. 161: indemnización por ${tope11meses} años (tope 11). Sueldo base tope 90 UF (~$3.510.000).`;
+    } else if (causal === 'renuncia') {
+      nota = 'Renuncia voluntaria: no corresponde indemnización por años de servicio.';
+    } else if (causal === 'mutuo') {
+      nota = 'Mutuo acuerdo: la indemnización es negociable entre las partes.';
+    } else {
+      nota = 'Esta causal no genera indemnización por años de servicio obligatoria.';
+    }
+
+    const vacMontos    = Math.round(sueldoDia * diasVac);
+    const proporcional = Math.round(sueldo / 30 * mesesEx * 30);
+    const total        = indemnizacion + aviso + vacMontos + (mesesEx > 0 ? proporcional : 0);
+
+    document.getElementById('fr-sueldo').textContent        = formatCLP(sueldo);
+    document.getElementById('fr-indemnizacion').textContent = formatCLP(indemnizacion);
+    document.getElementById('fr-aviso').textContent         = formatCLP(aviso);
+    document.getElementById('fr-vacaciones').textContent    = formatCLP(vacMontos);
+    document.getElementById('fr-dias-vac').textContent      = diasVac;
+    document.getElementById('fr-proporcional').textContent  = formatCLP(proporcional);
+    document.getElementById('fr-total').textContent         = formatCLP(total);
+    document.getElementById('fr-nota').textContent          = '* ' + nota + ' Estimación referencial.';
+
+    // Mostrar/ocultar filas según causal
+    document.getElementById('fr-row-indemnizacion').style.display = causal === 'necesidades' ? '' : 'none';
+    document.getElementById('fr-row-aviso').style.display = causal === 'necesidades' ? '' : 'none';
+    document.getElementById('fin-results').style.display  = 'block';
+  }
+</script>
+</body>
+</html>

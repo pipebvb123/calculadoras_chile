@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Vacaciones Chile 2026 | Días y Compensación</title>
+  <meta name="description" content="Calcula los días de vacaciones acumulados en Chile y su compensación en pesos. Herramienta basada en la Ley 18.620 del Código del Trabajo 2026.">
+  <meta name="keywords" content="calculadora vacaciones Chile, días vacaciones trabajo Chile, feriado legal Chile 2026, compensación vacaciones dinero, vacaciones proporcionales Chile">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadoras-chile-5sbh.vercel.app/calculadora-vacaciones.html">
+  <link rel="stylesheet" href="css/styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987300357303329" crossorigin="anonymous"></script>
+  <style>
+    .page-hero { background:linear-gradient(135deg,#14532D,#166534,#16A34A); }
+    .vac-result { background:linear-gradient(135deg,#059669,#10B981); color:#fff; border-radius:var(--radius); padding:24px; margin-top:20px; }
+    .vac-result .vr-main { font-size:clamp(2rem,5vw,2.8rem); font-weight:800; margin:8px 0; }
+    .vac-result .vr-label { font-size:.85rem; opacity:.85; }
+    .vac-stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-top:16px; }
+    .vac-stat { background:rgba(255,255,255,.15); border-radius:8px; padding:14px; text-align:center; }
+    .vac-stat .vs-val { font-size:1.4rem; font-weight:800; }
+    .vac-stat .vs-lbl { font-size:.78rem; opacity:.8; margin-top:2px; }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🇨🇱</span><span class="logo-text">Calculadoras<strong>Chile</strong></span></a>
+    <nav class="main-nav" id="main-nav">
+      <div class="nav-item has-dropdown">
+        <a href="index.html#calculadoras" class="nav-link active">Calculadoras ▾</a>
+        <div class="dropdown-menu">
+          <a href="sueldo-liquido.html">💼 Sueldo Líquido</a>
+          <a href="uf-calculadora.html">📊 Calculadora UF</a>
+          <a href="credito-hipotecario.html">🏠 Crédito Hipotecario</a>
+          <a href="calculadora-iva.html">🧾 Calculadora IVA</a>
+          <a href="calculadora-utm.html">📐 UTM a CLP</a>
+          <a href="calculadora-vacaciones.html">🌴 Vacaciones</a>
+          <a href="calculadora-finiquito.html">📋 Finiquito</a>
+          <a href="calculadora-interes-compuesto.html">💹 Interés Compuesto</a>
+          <a href="calculadora-descuentos.html">🏷️ Descuentos</a>
+          <a href="conversor-dolar.html">💵 Conversor Dólar</a>
+          <a href="calculadora-afp.html">🏦 Calculadora AFP</a>
+        </div>
+      </div>
+      <a href="blog/" class="nav-link">Blog</a>
+      <a href="sobre-nosotros.html" class="nav-link">Nosotros</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="breadcrumbs">
+  <div class="bc-inner"><a href="index.html">Inicio</a><span class="sep">›</span><a href="index.html#calculadoras">Calculadoras</a><span class="sep">›</span><span class="current">Calculadora Vacaciones</span></div>
+</div>
+
+<header class="page-hero" style="padding:48px 20px 40px; text-align:center;">
+  <div class="container">
+    <h1 style="color:#fff; font-size:clamp(1.6rem,4vw,2.4rem); font-weight:800; margin-bottom:10px;">Calculadora de Vacaciones Chile 2026</h1>
+    <p style="color:#fff; opacity:.88; font-size:1.05rem; max-width:560px; margin:0 auto;">Calcula los días de vacaciones acumulados y su equivalente en pesos según la ley laboral chilena.</p>
+  </div>
+</header>
+
+<main class="container" style="padding-top:28px; padding-bottom:48px">
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="card">
+    <h2>🌴 Calcular mis vacaciones</h2>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="vac-fecha-inicio">Fecha de inicio del contrato</label>
+        <input type="date" id="vac-fecha-inicio">
+      </div>
+      <div class="form-group">
+        <label for="vac-fecha-calc">Fecha de cálculo (hoy)</label>
+        <input type="date" id="vac-fecha-calc">
+      </div>
+      <div class="form-group">
+        <label for="vac-sueldo">Sueldo diario promedio (CLP $)</label>
+        <input type="text" id="vac-sueldo" placeholder="Ej: 50.000 (sueldo mensual ÷ 30)" inputmode="numeric" oninput="formatInput(this)">
+      </div>
+      <div class="form-group">
+        <label for="vac-tipo">Tipo de trabajador</label>
+        <select id="vac-tipo">
+          <option value="normal">Trabajador regular (15 días hábiles/año)</option>
+          <option value="zona">Zona austral (+20 días hábiles/año)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="vac-dias-tomados">Días de vacaciones ya tomados (este período)</label>
+      <input type="number" id="vac-dias-tomados" placeholder="0" min="0" value="0">
+    </div>
+
+    <button class="btn btn-secondary btn-block" onclick="calcVacaciones()">Calcular Vacaciones →</button>
+
+    <div id="vac-results" style="display:none">
+      <div class="vac-result">
+        <div class="vr-label">Días de vacaciones acumulados</div>
+        <div class="vr-main" id="vr-dias">0 días hábiles</div>
+        <div class="vac-stat-grid">
+          <div class="vac-stat"><div class="vs-val" id="vr-meses">0</div><div class="vs-lbl">Meses trabajados</div></div>
+          <div class="vac-stat"><div class="vs-val" id="vr-dias-periodo">0</div><div class="vs-lbl">Días período actual</div></div>
+          <div class="vac-stat"><div class="vs-val" id="vr-compensacion">$0</div><div class="vs-lbl">Compensación estimada</div></div>
+        </div>
+      </div>
+      <p style="font-size:.78rem; color:var(--text-muted); text-align:center; margin-top:10px" id="vr-nota"></p>
+    </div>
+  </div>
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="prose">
+    <h2>¿Cómo funcionan las vacaciones en Chile?</h2>
+    <p>La ley laboral chilena (Código del Trabajo, artículos 67 y siguientes) establece el derecho a vacaciones anuales remuneradas para todos los trabajadores con contrato indefinido o a plazo fijo que cumplan ciertos requisitos.</p>
+
+    <h3>¿Cuántos días de vacaciones corresponden en Chile?</h3>
+    <p>Los trabajadores con más de 1 año de servicio tienen derecho a un mínimo de <strong>15 días hábiles</strong> de vacaciones por año. Los días sábados NO cuentan como días hábiles para este efecto.</p>
+    <p>Para trabajadores de la <strong>Región de Magallanes y Antártica Chilena</strong>, Aysén, Palena y las provincias de Chiloé y Osorno, el feriado legal es de <strong>20 días hábiles</strong>.</p>
+
+    <h3>¿Puedo pedir vacaciones proporcionales?</h3>
+    <p>Sí. Si llevas menos de 1 año en la empresa, al terminar el contrato tienes derecho a las <strong>vacaciones proporcionales</strong>, es decir, los días que corresponderían proporcionalmente al tiempo trabajado durante el año.</p>
+
+    <h3>¿Se pueden compensar las vacaciones en dinero?</h3>
+    <p>En general, las vacaciones son irrenunciables y deben tomarse en tiempo libre. Sin embargo, <strong>el exceso sobre los 10 días hábiles puede compensarse en dinero</strong> si el trabajador y el empleador así lo acuerdan. Además, al término del contrato, siempre se compensan las vacaciones pendientes o proporcionales.</p>
+
+    <h3>¿Cuánto vale un día de vacaciones?</h3>
+    <p>Para calcular la compensación, se usa el <strong>sueldo diario</strong>, que es el sueldo mensual dividido por 30. La compensación se calcula multiplicando el sueldo diario por los días de vacaciones pendientes.</p>
+
+    <div class="tip-box">
+      <strong>Importante:</strong> El cálculo de esta herramienta es referencial. Para situaciones específicas (contratos a tazón, trabajadores por obra, horarios especiales), consulta con un abogado laboral o con la Inspección del Trabajo (DT.gob.cl).
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Preguntas Frecuentes sobre Vacaciones en Chile</h2>
+    <div class="faq-item">
+      <button class="faq-q">¿Desde cuándo tengo derecho a vacaciones? <span class="faq-icon">+</span></button>
+      <div class="faq-a">En Chile, el derecho al feriado anual (vacaciones completas de 15 días hábiles) se adquiere después de cumplir 1 año de servicio en la empresa. Sin embargo, en contratos de más de 1 año, el empleador puede conceder vacaciones antes de cumplir el año, anticipando días que aún no se han devengado.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Qué pasa si no tomé mis vacaciones del año pasado? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Las vacaciones no prescriben de un año para otro si el trabajador no pudo tomarlas por razones del empleador. Sin embargo, las vacaciones acumuladas por más de 2 períodos consecutivos sí pueden generar problemas y el empleador está obligado a darlas. Es conveniente ponerse de acuerdo con el empleador para planificar su uso.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Los días sábado cuentan como días hábiles en vacaciones? <span class="faq-icon">+</span></button>
+      <div class="faq-a">No. Para el cómputo de las vacaciones en Chile, los días sábados NO se cuentan como hábiles. Solo se cuentan los días de lunes a viernes que no sean feriados legales. Esto es lo que hace que 15 días hábiles de vacaciones equivalgan a aproximadamente 3 semanas calendario.</div>
+    </div>
+  </div>
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand"><a href="index.html" class="footer-logo"><span style="font-size:1.4rem">🇨🇱</span><span>Calculadoras<strong>Chile</strong></span></a><p>Herramientas financieras gratuitas para Chile.</p></div>
+    <div class="footer-col"><h4>Calculadoras</h4><a href="sueldo-liquido.html">Sueldo Líquido</a><a href="calculadora-finiquito.html">Finiquito</a><a href="calculadora-vacaciones.html">Vacaciones</a><a href="calculadora-afp.html">AFP</a></div>
+    <div class="footer-col"><h4>Recursos</h4><a href="blog/">Blog</a><a href="uf-calculadora.html">UF</a><a href="credito-hipotecario.html">Hipotecario</a></div>
+    <div class="footer-col"><h4>Empresa</h4><a href="sobre-nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 CalculadorasChile.cl</span><span>Cálculo referencial. Consulta a un experto laboral para casos específicos.</span></div>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  // Inicializar fechas
+  const today = new Date();
+  document.getElementById('vac-fecha-calc').value = today.toISOString().split('T')[0];
+  const oneYearAgo = new Date(today);
+  oneYearAgo.setFullYear(today.getFullYear() - 1);
+  document.getElementById('vac-fecha-inicio').value = oneYearAgo.toISOString().split('T')[0];
+
+  function calcVacaciones() {
+    const inicio  = new Date(document.getElementById('vac-fecha-inicio').value);
+    const calc    = new Date(document.getElementById('vac-fecha-calc').value);
+    const sueldoD = parseNum(document.getElementById('vac-sueldo').value);
+    const tipo    = document.getElementById('vac-tipo').value;
+    const tomados = parseInt(document.getElementById('vac-dias-tomados').value) || 0;
+
+    if (!document.getElementById('vac-fecha-inicio').value) { alert('Ingresa la fecha de inicio del contrato.'); return; }
+    if (inicio > calc) { alert('La fecha de inicio no puede ser posterior a la fecha de cálculo.'); return; }
+
+    const diasBase    = tipo === 'zona' ? 20 : 15;
+    const diffMs      = calc - inicio;
+    const meses       = diffMs / (1000 * 60 * 60 * 24 * 30.44);
+    const diasAcum    = (diasBase / 12) * meses;
+    const diasPendient = Math.max(0, Math.round(diasAcum - tomados));
+    const compensacion = sueldoD > 0 ? diasPendient * sueldoD : 0;
+
+    document.getElementById('vr-dias').textContent     = diasPendient + ' días hábiles';
+    document.getElementById('vr-meses').textContent    = Math.floor(meses);
+    document.getElementById('vr-dias-periodo').textContent = Math.round(diasAcum);
+    document.getElementById('vr-compensacion').textContent = compensacion > 0 ? formatCLP(compensacion) : 'Ingresa sueldo';
+    document.getElementById('vr-nota').textContent    = `* Basado en ${diasBase} días hábiles/año. ${Math.floor(meses)} meses trabajados, ${tomados} días ya tomados.`;
+    document.getElementById('vac-results').style.display = 'block';
+  }
+</script>
+</body>
+</html>

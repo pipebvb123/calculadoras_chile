@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,7 @@
   <meta property="og:description" content="Herramienta gratuita para calcular tu sueldo líquido en Chile. AFP, salud e impuestos incluidos.">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://calculadoras-chile-5sbh.vercel.app/sueldo-liquido.html">
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987300357303329" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -23,513 +22,260 @@
       {
         "@type": "Question",
         "name": "¿Cuál es la diferencia entre sueldo bruto y sueldo líquido?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "El sueldo bruto es el monto acordado en tu contrato, antes de descuentos. El sueldo líquido es lo que efectivamente depositan en tu cuenta, después de descontar AFP, salud e impuesto a la renta."
-        }
+        "acceptedAnswer": {"@type": "Answer", "text": "El sueldo bruto es el monto acordado en tu contrato, antes de descuentos. El sueldo líquido es lo que efectivamente depositan en tu cuenta, después de descontar AFP, salud e impuesto a la renta."}
       },
       {
         "@type": "Question",
         "name": "¿Cuándo pago impuesto a la renta en Chile?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Solo cuando tu sueldo supera los 13,5 UTM mensuales (~$931.500 en 2026). Debajo de ese monto estás exento. La tasa máxima es 40% para sueldos muy altos."
-        }
+        "acceptedAnswer": {"@type": "Answer", "text": "Solo cuando tu sueldo supera los 13,5 UTM mensuales (~$931.500 en 2026). Debajo de ese monto estás exento. La tasa máxima es 40% para sueldos muy altos."}
       },
       {
         "@type": "Question",
         "name": "¿Cuál es el tope imponible AFP y para qué sirve?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Es el sueldo máximo sobre el cual se calculan AFP y salud (~$3.300.000 en 2026). Si ganas más que eso, los descuentos se calculan solo sobre el tope. El exceso queda libre de cotizaciones."
-        }
+        "acceptedAnswer": {"@type": "Answer", "text": "Es el sueldo máximo sobre el cual se calculan AFP y salud (~$3.300.000 en 2026). Si ganas más que eso, los descuentos se calculan solo sobre el tope. El exceso queda libre de cotizaciones."}
       },
       {
         "@type": "Question",
         "name": "¿La AFP más barata siempre conviene?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No necesariamente. Aunque menos comisión significa más dinero hoy, debes considerar la rentabilidad histórica de los fondos de cada AFP, ya que eso impacta tu pensión futura."
-        }
+        "acceptedAnswer": {"@type": "Answer", "text": "No necesariamente. Aunque menos comisión significa más dinero hoy, debes considerar la rentabilidad histórica de los fondos de cada AFP, ya que eso impacta tu pensión futura."}
       },
       {
         "@type": "Question",
         "name": "¿Es lo mismo cotizar en Fonasa que en Isapre?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "El descuento base es el mismo (7% del sueldo imponible). Fonasa es público y da acceso a la red pública de salud. Isapre es privada, generalmente con mejor acceso a clínicas privadas."
-        }
+        "acceptedAnswer": {"@type": "Answer", "text": "El descuento base es el mismo (7% del sueldo imponible). Fonasa es público y da acceso a la red pública de salud. Isapre es privada, generalmente con mejor acceso a clínicas privadas."}
       }
     ]
   }
   </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987300357303329" crossorigin="anonymous"></script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --primary: #2563EB;
-      --primary-dark: #1D4ED8;
-      --primary-light: #EFF6FF;
-      --secondary: #059669;
-      --secondary-light: #ECFDF5;
-      --warning: #D97706;
-      --bg: #F1F5F9;
-      --card: #FFFFFF;
-      --text: #1E293B;
-      --text-muted: #64748B;
-      --text-light: #94A3B8;
-      --border: #E2E8F0;
-      --radius: 12px;
-      --shadow: 0 4px 6px -1px rgba(0,0,0,.08), 0 2px 4px -1px rgba(0,0,0,.05);
-      --shadow-lg: 0 10px 25px -5px rgba(0,0,0,.12);
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      font-size: 16px;
-    }
-
-    /* NAV */
-    .topnav {
-      background: var(--primary-dark);
-      padding: 10px 0;
-      text-align: center;
-    }
-    .topnav a {
-      color: rgba(255,255,255,.85);
-      text-decoration: none;
-      font-size: 13px;
-      margin: 0 12px;
-      transition: color .2s;
-    }
-    .topnav a:hover, .topnav a.active { color: #fff; font-weight: 600; }
-
-    /* HERO */
-    .hero {
-      background: linear-gradient(135deg, #1E40AF 0%, #2563EB 60%, #3B82F6 100%);
-      color: #fff;
-      padding: 48px 20px 40px;
-      text-align: center;
-    }
-    .hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 10px; }
-    .hero p  { font-size: 1.05rem; opacity: .88; max-width: 560px; margin: 0 auto; }
-
-    /* LAYOUT */
-    .container { max-width: 860px; margin: 0 auto; padding: 0 16px; }
-    .section { padding: 32px 0; }
-
-    /* AD PLACEHOLDER */
-    .ad-slot {
-      background: #fff;
-      border: 2px dashed var(--border);
-      border-radius: var(--radius);
-      padding: 18px;
-      text-align: center;
-      color: var(--text-light);
-      font-size: 13px;
-      margin: 20px 0;
-    }
-    .ad-slot strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
-
-    /* CARD */
-    .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 28px;
-      margin-bottom: 24px;
-    }
-    .card h2 { font-size: 1.2rem; color: var(--primary); margin-bottom: 20px; }
-
-    /* FORM */
-    .form-group { margin-bottom: 20px; }
-    .form-group label {
-      display: block;
-      font-size: .875rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 7px;
-    }
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 13px 16px;
-      border: 2px solid var(--border);
-      border-radius: 8px;
-      font-size: 1rem;
-      color: var(--text);
-      background: #fff;
-      transition: border-color .2s, box-shadow .2s;
-      appearance: none;
-    }
-    .form-group input:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37,99,235,.15);
-    }
-    .radio-group { display: flex; gap: 12px; flex-wrap: wrap; }
-    .radio-btn {
-      flex: 1;
-      min-width: 120px;
-      border: 2px solid var(--border);
-      border-radius: 8px;
-      padding: 12px 16px;
-      cursor: pointer;
-      transition: all .2s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: .95rem;
-    }
-    .radio-btn input { width: auto; margin: 0; }
-    .radio-btn:has(input:checked) {
-      border-color: var(--primary);
-      background: var(--primary-light);
-      color: var(--primary);
-      font-weight: 600;
-    }
-    .btn-calc {
-      width: 100%;
-      padding: 15px;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background .2s, transform .1s;
-      margin-top: 8px;
-    }
-    .btn-calc:hover { background: var(--primary-dark); transform: translateY(-1px); }
-    .btn-calc:active { transform: translateY(0); }
-
-    /* RESULTS */
-    #results { display: none; }
-    .result-hero {
-      background: linear-gradient(135deg, #059669, #10B981);
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 28px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .result-hero .label { font-size: .9rem; opacity: .9; margin-bottom: 6px; }
-    .result-hero .amount { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -.02em; }
-    .breakdown-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-    .breakdown-item {
-      background: var(--bg);
-      border-radius: 10px;
-      padding: 16px;
-      border-left: 4px solid var(--border);
-    }
-    .breakdown-item.deduction { border-left-color: #EF4444; }
-    .breakdown-item.tax       { border-left-color: var(--warning); }
-    .breakdown-item.gross     { border-left-color: var(--primary); }
-    .breakdown-item .bi-label { font-size: .8rem; color: var(--text-muted); font-weight: 500; margin-bottom: 4px; }
-    .breakdown-item .bi-val   { font-size: 1.15rem; font-weight: 700; }
-    .breakdown-item .bi-pct   { font-size: .78rem; color: var(--text-light); margin-top: 2px; }
-    .progress-bar { background: var(--bg); border-radius: 99px; height: 10px; overflow: hidden; margin: 16px 0 8px; }
-    .progress-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, #10B981, #2563EB); transition: width .6s ease; }
-
-    /* INFO SECTION */
-    .info-section { background: var(--card); border-radius: var(--radius); padding: 28px; margin-bottom: 24px; }
-    .info-section h2 { color: var(--primary); margin-bottom: 14px; font-size: 1.25rem; }
-    .info-section h3 { color: var(--text); margin: 18px 0 8px; font-size: 1rem; }
-    .info-section p  { color: var(--text-muted); margin-bottom: 12px; font-size: .95rem; }
-
-    /* FAQ */
-    .faq-item { border-bottom: 1px solid var(--border); }
-    .faq-q {
-      width: 100%;
-      text-align: left;
-      background: none;
-      border: none;
-      padding: 18px 0;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-    .faq-q:hover { color: var(--primary); }
-    .faq-q .icon { font-size: 1.3rem; transition: transform .3s; flex-shrink: 0; }
-    .faq-q.open .icon { transform: rotate(45deg); }
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .35s ease, padding .35s;
-      color: var(--text-muted);
-      font-size: .95rem;
-      line-height: 1.7;
-    }
-    .faq-a.open { max-height: 300px; padding-bottom: 16px; }
-
-    /* TABLE */
-    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
-    th { background: var(--primary-light); color: var(--primary); padding: 10px 12px; text-align: left; font-weight: 600; }
-    td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: #F8FAFC; }
-
-    /* FOOTER */
-    footer {
-      background: var(--text);
-      color: rgba(255,255,255,.75);
-      padding: 36px 20px;
-      text-align: center;
-      font-size: .875rem;
-    }
-    footer h3 { color: #fff; margin-bottom: 16px; }
-    .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
-    .footer-links a { color: rgba(255,255,255,.8); text-decoration: none; transition: color .2s; }
-    .footer-links a:hover { color: #fff; }
-    .disclaimer { font-size: .78rem; opacity: .6; margin-top: 12px; }
-
-    @media (max-width: 640px) {
-      .card { padding: 20px 16px; }
-      .hero { padding: 32px 16px 28px; }
-      .breakdown-grid { grid-template-columns: 1fr 1fr; }
-    }
+    .page-hero { background: linear-gradient(135deg, #1E40AF 0%, #2563EB 60%, #3B82F6 100%); }
+    .result-hero { background:linear-gradient(135deg,#059669,#10B981); color:#fff; border-radius:var(--radius); padding:28px; text-align:center; margin-bottom:20px; }
+    .result-hero .label { font-size:.9rem; opacity:.9; margin-bottom:6px; }
+    .result-hero .amount { font-size:clamp(2rem,5vw,3rem); font-weight:800; letter-spacing:-.02em; }
+    .breakdown-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:20px; }
+    .breakdown-item { background:var(--bg); border-radius:10px; padding:16px; border-left:4px solid var(--border); }
+    .breakdown-item.deduction { border-left-color:#EF4444; }
+    .breakdown-item.tax       { border-left-color:#D97706; }
+    .breakdown-item.gross     { border-left-color:var(--primary); }
+    .breakdown-item .bi-label { font-size:.8rem; color:var(--text-muted); font-weight:500; margin-bottom:4px; }
+    .breakdown-item .bi-val   { font-size:1.15rem; font-weight:700; }
+    .breakdown-item .bi-pct   { font-size:.78rem; color:var(--text-light); margin-top:2px; }
+    .progress-bar { background:var(--bg); border-radius:99px; height:10px; overflow:hidden; margin:16px 0 8px; }
+    .progress-fill { height:100%; border-radius:99px; background:linear-gradient(90deg,#10B981,#2563EB); transition:width .6s ease; }
+    .radio-group { display:flex; gap:12px; flex-wrap:wrap; }
+    .radio-btn { flex:1; min-width:120px; border:2px solid var(--border); border-radius:8px; padding:12px 16px; cursor:pointer; transition:all .2s; display:flex; align-items:center; gap:8px; font-size:.95rem; }
+    .radio-btn input { width:auto; margin:0; }
+    .radio-btn:has(input:checked) { border-color:var(--primary); background:#EFF6FF; color:var(--primary); font-weight:600; }
   </style>
 </head>
 <body>
 
-<!-- BARRA DE NAVEGACIÓN -->
-<nav class="topnav" aria-label="Herramientas">
-  <a href="sueldo-liquido.html" class="active">💼 Sueldo Líquido</a>
-  <a href="uf-calculadora.html">📊 Calculadora UF</a>
-  <a href="credito-hipotecario.html">🏠 Crédito Hipotecario</a>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="container">
-    <h1>Calculadora de Sueldo Líquido Chile 2026</h1>
-    <p>Descubre cuánto recibirás en tu cuenta. Calcula AFP, salud e impuestos en segundos.</p>
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🇨🇱</span><span class="logo-text">Calculadoras<strong>Chile</strong></span></a>
+    <nav class="main-nav" id="main-nav">
+      <div class="nav-item has-dropdown">
+        <a href="index.html#calculadoras" class="nav-link active">Calculadoras ▾</a>
+        <div class="dropdown-menu">
+          <a href="sueldo-liquido.html">💼 Sueldo Líquido</a>
+          <a href="uf-calculadora.html">📊 Calculadora UF</a>
+          <a href="credito-hipotecario.html">🏠 Crédito Hipotecario</a>
+          <a href="calculadora-iva.html">🧾 Calculadora IVA</a>
+          <a href="calculadora-utm.html">📐 UTM a CLP</a>
+          <a href="calculadora-vacaciones.html">🌴 Vacaciones</a>
+          <a href="calculadora-finiquito.html">📋 Finiquito</a>
+          <a href="calculadora-interes-compuesto.html">💹 Interés Compuesto</a>
+          <a href="calculadora-descuentos.html">🏷️ Descuentos</a>
+          <a href="conversor-dolar.html">💵 Conversor Dólar</a>
+          <a href="calculadora-afp.html">🏦 Calculadora AFP</a>
+        </div>
+      </div>
+      <a href="blog/" class="nav-link">Blog</a>
+      <a href="sobre-nosotros.html" class="nav-link">Nosotros</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<main class="container">
+<div class="breadcrumbs">
+  <div class="bc-inner"><a href="index.html">Inicio</a><span class="sep">›</span><a href="index.html#calculadoras">Calculadoras</a><span class="sep">›</span><span class="current">Sueldo Líquido</span></div>
+</div>
 
-  <!-- ANUNCIO SUPERIOR -->
-  <div class="ad-slot" aria-label="Espacio publicitario">
-    <strong>Publicidad</strong>
-    <!-- ESPACIO ANUNCIO ADSENSE - BANNER 728x90 o responsivo -->
-    <!-- Pegar aquí el código de Google AdSense -->
-    [Banner publicitario 728×90]
+<header class="page-hero" style="padding:48px 20px 40px; text-align:center;">
+  <div class="container">
+    <h1 style="color:#fff; font-size:clamp(1.6rem,4vw,2.4rem); font-weight:800; margin-bottom:10px;">Calculadora de Sueldo Líquido Chile 2026</h1>
+    <p style="color:#fff; opacity:.88; font-size:1.05rem; max-width:560px; margin:0 auto;">Descubre cuánto recibirás en tu cuenta. Calcula AFP, salud e impuestos en segundos.</p>
   </div>
+</header>
 
-  <!-- CALCULADORA -->
-  <section class="section">
-    <div class="card">
-      <h2>🧮 Ingresa tus datos</h2>
+<main class="container" style="padding-top:28px; padding-bottom:48px">
 
-      <div class="form-group">
-        <label for="sueldo">Sueldo Bruto Mensual (CLP $)</label>
-        <input type="text" id="sueldo" placeholder="Ej: 1.500.000" inputmode="numeric"
-               oninput="formatInput(this)" autocomplete="off">
-      </div>
-
-      <div class="form-group">
-        <label for="afp">AFP</label>
-        <select id="afp">
-          <option value="capital">AFP Capital — 11,44%</option>
-          <option value="cuprum">AFP Cuprum — 11,44%</option>
-          <option value="habitat" selected>AFP Hábitat — 11,27%</option>
-          <option value="modelo">AFP Modelo — 10,58%</option>
-          <option value="planvital">AFP PlanVital — 11,16%</option>
-          <option value="provida">AFP ProVida — 11,44%</option>
-          <option value="uno">AFP Uno — 10,49%</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Previsión de Salud</label>
-        <div class="radio-group">
-          <label class="radio-btn">
-            <input type="radio" name="salud" value="fonasa" checked> Fonasa (7%)
-          </label>
-          <label class="radio-btn">
-            <input type="radio" name="salud" value="isapre"> Isapre (7% base)
-          </label>
-        </div>
-      </div>
-
-      <button class="btn-calc" onclick="calcular()">Calcular Sueldo Líquido →</button>
-    </div>
-
-    <!-- RESULTADOS -->
-    <div id="results">
-      <div class="result-hero">
-        <div class="label">Tu Sueldo Líquido estimado es</div>
-        <div class="amount" id="res-neto">$0</div>
-        <div style="opacity:.8; font-size:.85rem; margin-top:6px" id="res-pct"></div>
-      </div>
-
-      <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
-      <p style="font-size:.8rem; color:var(--text-muted); margin-bottom:16px" id="progress-label"></p>
-
-      <div class="breakdown-grid">
-        <div class="breakdown-item gross">
-          <div class="bi-label">Sueldo Bruto</div>
-          <div class="bi-val" id="res-bruto">—</div>
-          <div class="bi-pct">100%</div>
-        </div>
-        <div class="breakdown-item deduction">
-          <div class="bi-label">Descuento AFP</div>
-          <div class="bi-val" id="res-afp">—</div>
-          <div class="bi-pct" id="res-afp-pct"></div>
-        </div>
-        <div class="breakdown-item deduction">
-          <div class="bi-label">Descuento Salud</div>
-          <div class="bi-val" id="res-salud">—</div>
-          <div class="bi-pct" id="res-salud-pct"></div>
-        </div>
-        <div class="breakdown-item tax">
-          <div class="bi-label">Impuesto Único</div>
-          <div class="bi-val" id="res-imp">—</div>
-          <div class="bi-pct" id="res-imp-pct"></div>
-        </div>
-      </div>
-
-      <div class="card" style="background:var(--primary-light); border:1px solid var(--border)">
-        <table>
-          <thead><tr><th>Concepto</th><th>Monto</th><th>% del bruto</th></tr></thead>
-          <tbody id="tabla-body"></tbody>
-        </table>
-      </div>
-
-      <p style="font-size:.78rem; color:var(--text-light); text-align:center; margin-top:8px">
-        * Cálculo informativo. Valores basados en UTM 2026 (aprox.). Tope imponible AFP/salud ≈ $3.300.000.
-      </p>
-    </div>
-  </section>
-
-  <!-- ANUNCIO MEDIO -->
   <div class="ad-slot">
-    <strong>Publicidad</strong>
-    <!-- ESPACIO ANUNCIO ADSENSE - RECTÁNGULO 336x280 o responsivo -->
-    [Banner publicitario central]
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <!-- INFORMACIÓN SEO -->
-  <section class="info-section" aria-label="Información sobre sueldo líquido">
-    <h2>¿Cómo se calcula el sueldo líquido en Chile?</h2>
-    <p>
-      El sueldo líquido (o sueldo neto) es el monto que efectivamente recibes en tu cuenta bancaria cada mes,
-      una vez descontadas las cotizaciones previsionales y el impuesto a la renta. En Chile, los principales
-      descuentos que afectan tu remuneración bruta son tres: AFP, salud y el Impuesto Único de Segunda Categoría.
+  <div class="card">
+    <h2>🧮 Ingresa tus datos</h2>
+
+    <div class="form-group">
+      <label for="sueldo">Sueldo Bruto Mensual (CLP $)</label>
+      <input type="text" id="sueldo" placeholder="Ej: 1.500.000" inputmode="numeric" oninput="formatInput(this)" autocomplete="off">
+    </div>
+
+    <div class="form-group">
+      <label for="afp">AFP</label>
+      <select id="afp">
+        <option value="uno">AFP Uno — 10,49%</option>
+        <option value="modelo">AFP Modelo — 10,58%</option>
+        <option value="planvital">AFP PlanVital — 11,16%</option>
+        <option value="habitat" selected>AFP Hábitat — 11,27%</option>
+        <option value="capital">AFP Capital — 11,44%</option>
+        <option value="cuprum">AFP Cuprum — 11,44%</option>
+        <option value="provida">AFP ProVida — 11,44%</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Previsión de Salud</label>
+      <div class="radio-group">
+        <label class="radio-btn"><input type="radio" name="salud" value="fonasa" checked> Fonasa (7%)</label>
+        <label class="radio-btn"><input type="radio" name="salud" value="isapre"> Isapre (7% base)</label>
+      </div>
+    </div>
+
+    <button class="btn btn-secondary btn-block" onclick="calcular()">Calcular Sueldo Líquido →</button>
+  </div>
+
+  <div id="results" style="display:none">
+    <div class="result-hero">
+      <div class="label">Tu Sueldo Líquido estimado es</div>
+      <div class="amount" id="res-neto">$0</div>
+      <div style="opacity:.8; font-size:.85rem; margin-top:6px" id="res-pct"></div>
+    </div>
+
+    <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+    <p style="font-size:.8rem; color:var(--text-muted); margin-bottom:16px" id="progress-label"></p>
+
+    <div class="breakdown-grid">
+      <div class="breakdown-item gross">
+        <div class="bi-label">Sueldo Bruto</div>
+        <div class="bi-val" id="res-bruto">—</div>
+        <div class="bi-pct">100%</div>
+      </div>
+      <div class="breakdown-item deduction">
+        <div class="bi-label">Descuento AFP</div>
+        <div class="bi-val" id="res-afp">—</div>
+        <div class="bi-pct" id="res-afp-pct"></div>
+      </div>
+      <div class="breakdown-item deduction">
+        <div class="bi-label">Descuento Salud</div>
+        <div class="bi-val" id="res-salud">—</div>
+        <div class="bi-pct" id="res-salud-pct"></div>
+      </div>
+      <div class="breakdown-item tax">
+        <div class="bi-label">Impuesto Único</div>
+        <div class="bi-val" id="res-imp">—</div>
+        <div class="bi-pct" id="res-imp-pct"></div>
+      </div>
+    </div>
+
+    <div class="card" style="background:#EFF6FF; border:1px solid var(--border)">
+      <table class="data-table">
+        <thead><tr><th>Concepto</th><th>Monto</th><th>% del bruto</th></tr></thead>
+        <tbody id="tabla-body"></tbody>
+      </table>
+    </div>
+
+    <p style="font-size:.78rem; color:var(--text-muted); text-align:center; margin-top:8px">
+      * Cálculo informativo. Valores basados en UTM 2026. Tope imponible AFP/salud ≈ $3.300.000.
     </p>
+  </div>
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="prose">
+    <h2>¿Cómo se calcula el sueldo líquido en Chile?</h2>
+    <p>El sueldo líquido (o sueldo neto) es el monto que efectivamente recibes en tu cuenta bancaria cada mes, una vez descontadas las cotizaciones previsionales y el impuesto a la renta. En Chile, los principales descuentos son tres: AFP, salud y el Impuesto Único de Segunda Categoría.</p>
 
     <h3>1. Descuento de AFP</h3>
-    <p>
-      Cada mes se descuenta un porcentaje de tu sueldo para el fondo de pensiones. Este porcentaje varía según
-      la AFP a la que estés afiliado. Está compuesto por un 10% de ahorro previsional más la comisión de
-      administración de cada AFP. En 2026, las tasas van desde el 10,49% (AFP Uno) hasta el 11,44%
-      (AFP Capital, Cuprum y ProVida). Este descuento aplica sobre el sueldo imponible, que tiene un
-      tope máximo de aproximadamente $3.364.700.
-    </p>
+    <p>Cada mes se descuenta un porcentaje de tu sueldo para el fondo de pensiones. Este porcentaje varía según la AFP a la que estés afiliado. Está compuesto por un 10% de ahorro previsional más la comisión de administración. En 2026, las tasas van desde el 10,49% (AFP Uno) hasta el 11,44% (AFP Capital, Cuprum y ProVida). Este descuento aplica sobre el sueldo imponible con un tope de aproximadamente $3.300.000.</p>
 
     <h3>2. Descuento de Salud</h3>
-    <p>
-      El 7% de tu sueldo imponible se destina a salud. Si estás en Fonasa, ese 7% va directamente al
-      fondo nacional. Si tienes Isapre, el 7% es el mínimo legal, aunque tu plan puede requerir un copago
-      adicional que se suma a este descuento base. Al igual que el AFP, aplica el mismo tope imponible.
-    </p>
+    <p>El 7% de tu sueldo imponible se destina a salud. Si estás en Fonasa, ese 7% va directamente al fondo nacional. Si tienes Isapre, el 7% es el mínimo legal, aunque tu plan puede requerir un copago adicional. Al igual que el AFP, aplica el mismo tope imponible.</p>
 
     <h3>3. Impuesto Único de Segunda Categoría (IUSC)</h3>
-    <p>
-      Es el impuesto progresivo a la renta que pagan los trabajadores dependientes. Funciona por tramos:
-      quienes ganan menos de 13,5 UTM mensuales (~$931.500 en 2026) están exentos. A medida que el sueldo
-      sube, el porcentaje aumenta gradualmente hasta el 40% para sueldos muy altos. La mayoría de los
-      trabajadores chilenos paga 0% o 4% de impuesto.
-    </p>
+    <p>Es el impuesto progresivo a la renta que pagan los trabajadores dependientes. Quienes ganan menos de 13,5 UTM mensuales (~$931.500 en 2026) están exentos. A medida que el sueldo sube, el porcentaje aumenta gradualmente hasta el 40% para sueldos muy altos.</p>
 
     <h3>Ejemplo práctico</h3>
-    <p>
-      Un trabajador con sueldo bruto de $1.500.000, afiliado a AFP Hábitat (11,27%) y con Fonasa (7%),
-      descontaría: AFP $169.050 + Salud $105.000 + Impuesto $0 = Total descuentos $274.050.
-      Sueldo líquido: <strong>$1.225.950</strong> (aproximadamente el 81,7% del bruto).
-    </p>
+    <p>Un trabajador con sueldo bruto de $1.500.000, afiliado a AFP Hábitat (11,27%) y con Fonasa (7%): AFP $169.050 + Salud $105.000 + Impuesto $0 = Total descuentos $274.050. Sueldo líquido: <strong>$1.225.950</strong> (81,7% del bruto).</p>
 
     <h3>¿Qué es el tope imponible?</h3>
-    <p>
-      El tope imponible es el sueldo máximo sobre el cual se calculan las cotizaciones de AFP y salud.
-      Para 2026 es de aproximadamente $3.300.000 (equivalente a 81,6 UF). Si tu sueldo supera esa cifra,
-      solo pagas AFP y salud sobre el tope; el exceso queda libre de esas cotizaciones. Sin embargo,
-      el impuesto a la renta se calcula sobre el sueldo total sin tope.
-    </p>
+    <p>Es el sueldo máximo sobre el cual se calculan las cotizaciones de AFP y salud. Para 2026 es de aproximadamente $3.300.000 (~81,6 UF). Si tu sueldo supera esa cifra, solo pagas AFP y salud sobre el tope; el exceso queda libre. Sin embargo, el impuesto a la renta se calcula sobre el sueldo total sin tope.</p>
 
-    <h3>Diferencia entre sueldo bruto y sueldo líquido</h3>
-    <p>
-      El sueldo bruto es lo que el empleador acuerda pagarte. El sueldo líquido es lo que recibes realmente.
-      En Chile, la diferencia suele ser entre el 15% y el 25% del bruto, dependiendo del nivel de ingreso
-      y la AFP elegida. Esta calculadora te permite conocer exactamente cuánto recibirás antes de aceptar
-      una oferta laboral.
-    </p>
-  </section>
-
-  <!-- FAQ -->
-  <section class="card" aria-label="Preguntas frecuentes">
-    <h2>Preguntas Frecuentes</h2>
-    <div id="faq-container"></div>
-  </section>
-
-  <!-- ANUNCIO INFERIOR -->
-  <div class="ad-slot" style="margin-bottom:32px">
-    <strong>Publicidad</strong>
-    <!-- ESPACIO ANUNCIO ADSENSE - BANNER INFERIOR 728x90 o responsivo -->
-    [Banner publicitario inferior]
+    <div class="tip-box">
+      <strong>Tip:</strong> Para maximizar tu sueldo líquido, considera cambiar a AFP Uno (comisión 0,49%, la más baja del mercado). La diferencia respecto a las AFP más caras puede superar $15.000 mensuales en sueldos de $1.000.000.
+    </div>
   </div>
 
+  <div class="card">
+    <h2>Preguntas Frecuentes sobre Sueldo Líquido</h2>
+    <div class="faq-item">
+      <button class="faq-q">¿Cuál es la diferencia entre sueldo bruto y sueldo líquido? <span class="faq-icon">+</span></button>
+      <div class="faq-a">El sueldo bruto es el monto acordado en tu contrato, antes de descuentos. El sueldo líquido es lo que efectivamente depositan en tu cuenta, después de descontar AFP, salud e impuesto a la renta. En Chile la diferencia suele ser entre el 15% y el 25% del bruto.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Por qué mi sueldo líquido varía de un mes a otro? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Puede deberse a cambios en el valor de la UTM (que afecta el cálculo del impuesto), variaciones en horas trabajadas, bonos esporádicos, o ajustes en el plan de salud. El impuesto es progresivo: si un mes tienes un bono, puede subirte de tramo.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿La AFP más barata siempre conviene? <span class="faq-icon">+</span></button>
+      <div class="faq-a">No necesariamente. Aunque menos comisión significa más dinero hoy, debes considerar la rentabilidad histórica de los fondos de cada AFP, ya que eso impacta tu pensión futura. La comisión es importante, pero no es el único factor.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Cuándo pago impuesto a la renta en Chile? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Solo cuando tu sueldo supera los 13,5 UTM mensuales (~$931.500 en 2026). Entre $931.500 y $2.070.000 pagas un 4% (menos la cantidad a rebajar). La tasa máxima es 40% para sueldos sobre $10.350.000.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Es lo mismo cotizar en Fonasa que en Isapre? <span class="faq-icon">+</span></button>
+      <div class="faq-a">El descuento base es el mismo (7% del sueldo imponible). La diferencia está en el servicio: Fonasa es público y da acceso a la red pública de salud. Isapre es privada, generalmente con mejor acceso a clínicas, pero muchos planes tienen copago adicional sobre el 7% base.</div>
+    </div>
+  </div>
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 </main>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <h3>Calculadoras Financieras para Chile</h3>
-    <nav class="footer-links" aria-label="Links herramientas">
-      <a href="sueldo-liquido.html">💼 Calculadora Sueldo Líquido</a>
-      <a href="uf-calculadora.html">📊 Calculadora UF</a>
-      <a href="credito-hipotecario.html">🏠 Simulador Crédito Hipotecario</a>
-    </nav>
-    <p>Herramientas financieras gratuitas para trabajadores y familias chilenas.</p>
-    <p class="disclaimer">
-      Los cálculos son estimativos y de carácter informativo. No reemplaza asesoramiento financiero profesional.
-      Tasas AFP y UTM correspondientes al año 2026.
-    </p>
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand"><a href="index.html" class="footer-logo"><span style="font-size:1.4rem">🇨🇱</span><span>Calculadoras<strong>Chile</strong></span></a><p>Herramientas financieras gratuitas para Chile.</p></div>
+    <div class="footer-col"><h4>Calculadoras</h4><a href="sueldo-liquido.html">Sueldo Líquido</a><a href="calculadora-finiquito.html">Finiquito</a><a href="calculadora-vacaciones.html">Vacaciones</a><a href="calculadora-afp.html">AFP</a></div>
+    <div class="footer-col"><h4>Recursos</h4><a href="blog/">Blog</a><a href="uf-calculadora.html">UF</a><a href="credito-hipotecario.html">Hipotecario</a></div>
+    <div class="footer-col"><h4>Empresa</h4><a href="sobre-nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos</a></div>
   </div>
+  <div class="footer-bottom"><span>© 2026 CalculadorasChile.cl</span><span>Cálculo referencial. Tasas AFP y UTM correspondientes al año 2026.</span></div>
 </footer>
 
+<script src="js/app.js"></script>
 <script>
-  // ─── CONSTANTES 2026 ───────────────────────────────────────────────────────
-  const UTM = 69000;          // UTM 2026 (aproximado)
-  const TOPE_IMP = 3300000;   // Tope imponible AFP/salud 2026 (~81.6 UF)
+  const UTM = 69000;
+  const TOPE_IMP = 3300000;
 
   const AFP_RATES = {
-    capital:  11.44,
-    cuprum:   11.44,
-    habitat:  11.27,
-    modelo:   10.58,
-    planvital:11.16,
-    provida:  11.44,
-    uno:      10.49
+    capital:  11.44, cuprum: 11.44, habitat: 11.27,
+    modelo:   10.58, planvital: 11.16, provida: 11.44, uno: 10.49
   };
 
-  // Tramos IUSC: [límite superior en UTM, tasa, cantidad a rebajar en UTM]
   const TRAMOS = [
     [13.5,  0.00,  0.00],
     [30,    0.04,  0.54],
@@ -541,148 +287,61 @@
     [Infinity, 0.40, 30.78]
   ];
 
-  // ─── FORMATO DE MONEDA ─────────────────────────────────────────────────────
-  function formatCLP(n) {
-    return '$' + Math.round(n).toLocaleString('es-CL');
-  }
-
-  function formatInput(el) {
-    const raw = el.value.replace(/\D/g, '');
-    el.value = raw ? parseInt(raw, 10).toLocaleString('es-CL') : '';
-  }
-
-  function parseInput(val) {
-    return parseFloat(val.replace(/\./g, '').replace(',', '.')) || 0;
-  }
-
-  // ─── IMPUESTO ÚNICO ────────────────────────────────────────────────────────
   function calcIUSC(bruto) {
     for (const [limUTM, tasa, rebUTM] of TRAMOS) {
-      if (bruto <= limUTM * UTM) {
-        return Math.max(0, bruto * tasa - rebUTM * UTM);
-      }
+      if (bruto <= limUTM * UTM) return Math.max(0, bruto * tasa - rebUTM * UTM);
     }
     return 0;
   }
 
-  // ─── CÁLCULO PRINCIPAL ─────────────────────────────────────────────────────
-  function calcular() {
-    const bruto = parseInput(document.getElementById('sueldo').value);
-    if (!bruto || bruto < 1) {
-      alert('Por favor ingresa un sueldo válido.');
-      return;
-    }
-    if (bruto < 500000) {
-      alert('El sueldo mínimo legal en Chile 2026 es de $530.000 (aprox.). Verifica el valor ingresado.');
-    }
+  function pct(val, total) { return (val / total * 100).toFixed(2) + '%'; }
 
-    const afpKey   = document.getElementById('afp').value;
-    const afpRate  = AFP_RATES[afpKey];
+  function calcular() {
+    const bruto = parseNum(document.getElementById('sueldo').value);
+    if (!bruto || bruto < 1) { alert('Por favor ingresa un sueldo válido.'); return; }
+    if (bruto < 500000) alert('El sueldo mínimo legal en Chile 2026 es de ~$530.000. Verifica el valor ingresado.');
+
+    const afpKey    = document.getElementById('afp').value;
+    const afpRate   = AFP_RATES[afpKey];
     const imponible = Math.min(bruto, TOPE_IMP);
 
     const afpMonto   = imponible * afpRate / 100;
     const saludMonto = imponible * 0.07;
     const impuesto   = calcIUSC(bruto);
     const liquido    = bruto - afpMonto - saludMonto - impuesto;
-    const totalDesc  = afpMonto + saludMonto + impuesto;
     const pctLiquido = (liquido / bruto * 100).toFixed(1);
 
-    // Actualizar hero resultado
-    document.getElementById('res-neto').textContent = formatCLP(liquido);
-    document.getElementById('res-pct').textContent  = `(${pctLiquido}% de tu sueldo bruto)`;
+    document.getElementById('res-neto').textContent  = formatCLP(liquido);
+    document.getElementById('res-pct').textContent   = `(${pctLiquido}% de tu sueldo bruto)`;
     document.getElementById('res-bruto').textContent = formatCLP(bruto);
 
-    // Breakdown
-    setBI('res-afp',   afpMonto,   bruto, 'res-afp-pct');
-    setBI('res-salud', saludMonto, bruto, 'res-salud-pct');
-    setBI('res-imp',   impuesto,   bruto, 'res-imp-pct');
+    document.getElementById('res-afp').textContent     = formatCLP(afpMonto);
+    document.getElementById('res-afp-pct').textContent = pct(afpMonto, bruto);
+    document.getElementById('res-salud').textContent   = formatCLP(saludMonto);
+    document.getElementById('res-salud-pct').textContent = pct(saludMonto, bruto);
+    document.getElementById('res-imp').textContent     = formatCLP(impuesto);
+    document.getElementById('res-imp-pct').textContent = pct(impuesto, bruto);
 
-    // Barra de progreso
     document.getElementById('progress').style.width = pctLiquido + '%';
     document.getElementById('progress-label').textContent =
       `Recibes ${pctLiquido}% de tu sueldo bruto (${formatCLP(liquido)} de ${formatCLP(bruto)})`;
 
-    // Tabla resumen
-    const tbody = document.getElementById('tabla-body');
-    tbody.innerHTML = `
+    document.getElementById('tabla-body').innerHTML = `
       <tr><td>Sueldo Bruto</td><td><strong>${formatCLP(bruto)}</strong></td><td>100%</td></tr>
       <tr><td>− AFP (${afpRate}%)</td><td style="color:#EF4444">−${formatCLP(afpMonto)}</td><td>${pct(afpMonto,bruto)}</td></tr>
       <tr><td>− Salud (7%)</td><td style="color:#EF4444">−${formatCLP(saludMonto)}</td><td>${pct(saludMonto,bruto)}</td></tr>
       <tr><td>− Impuesto Único</td><td style="color:#D97706">−${formatCLP(impuesto)}</td><td>${pct(impuesto,bruto)}</td></tr>
-      <tr style="font-weight:700;background:var(--secondary-light)">
-        <td>= Sueldo Líquido</td>
-        <td style="color:var(--secondary)">${formatCLP(liquido)}</td>
-        <td>${pctLiquido}%</td>
+      <tr style="font-weight:700;background:#ECFDF5">
+        <td>= Sueldo Líquido</td><td style="color:#059669">${formatCLP(liquido)}</td><td>${pctLiquido}%</td>
       </tr>
     `;
 
-    // Mostrar resultados con animación
     const resEl = document.getElementById('results');
     resEl.style.display = 'block';
     resEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  function setBI(idVal, monto, bruto, idPct) {
-    document.getElementById(idVal).textContent = formatCLP(monto);
-    document.getElementById(idPct).textContent = pct(monto, bruto);
-  }
-
-  function pct(val, total) {
-    return (val / total * 100).toFixed(2) + '%';
-  }
-
-  // ─── FAQ ───────────────────────────────────────────────────────────────────
-  const faqs = [
-    {
-      q: '¿Cuál es la diferencia entre sueldo bruto y sueldo líquido?',
-      a: 'El sueldo bruto es el monto acordado en tu contrato, antes de descuentos. El sueldo líquido es lo que efectivamente depositan en tu cuenta, después de descontar AFP, salud e impuesto a la renta.'
-    },
-    {
-      q: '¿Por qué mi sueldo líquido varía de un mes a otro?',
-      a: 'Puede deberse a cambios en el valor de la UTM (que afecta el cálculo del impuesto), variaciones en las horas trabajadas, bonos esporádicos, o ajustes en el plan de salud. Recuerda que el impuesto es progresivo: si un mes tienes un bono, puede subirte de tramo.'
-    },
-    {
-      q: '¿La AFP más barata siempre conviene?',
-      a: 'No necesariamente. Aunque menos comisión significa más dinero hoy, debes considerar la rentabilidad histórica de los fondos de cada AFP, ya que eso impacta tu pensión futura. La comisión es importante, pero no es el único factor.'
-    },
-    {
-      q: '¿Cuál es el tope imponible y para qué sirve?',
-      a: 'Es el sueldo máximo sobre el cual se calculan AFP y salud (~$3.300.000 en 2026). Si ganas más que eso, los descuentos se calculan solo sobre el tope. El exceso queda libre de cotizaciones, aunque sí sigue tributando.'
-    },
-    {
-      q: '¿Cuándo pago impuesto a la renta en Chile?',
-      a: 'Solo cuando tu sueldo supera los 13,5 UTM mensuales (~$931.500 en 2026). Debajo de ese monto estás exento. Entre $931.500 y $2.070.000 pagas un 4% (menos la cantidad a rebajar). La tasa máxima es 40% para sueldos sobre $10.350.000.'
-    },
-    {
-      q: '¿Es lo mismo cotizar en Fonasa que en Isapre?',
-      a: 'El descuento base es el mismo (7% del sueldo imponible). La diferencia está en el servicio: Fonasa es público y da acceso a la red pública de salud. Isapre es privada, generalmente con mejor acceso a clínicas, pero muchos planes tienen un copago adicional sobre el 7% base.'
-    }
-  ];
-
-  const faqContainer = document.getElementById('faq-container');
-  faqs.forEach((item, i) => {
-    faqContainer.innerHTML += `
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(${i})" id="faq-q-${i}" aria-expanded="false">
-          ${item.q} <span class="icon">+</span>
-        </button>
-        <div class="faq-a" id="faq-a-${i}">${item.a}</div>
-      </div>
-    `;
-  });
-
-  function toggleFaq(i) {
-    const btn = document.getElementById(`faq-q-${i}`);
-    const ans = document.getElementById(`faq-a-${i}`);
-    const open = ans.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', open);
-  }
-
-  // Calcular al presionar Enter
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Enter') calcular();
-  });
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') calcular(); });
 </script>
 </body>
 </html>

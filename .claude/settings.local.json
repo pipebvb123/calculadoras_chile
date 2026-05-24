@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"c:\\\\calculadoras-chile\\\\css\" \"c:\\\\calculadoras-chile\\\\js\" \"c:\\\\calculadoras-chile\\\\blog\" && echo \"Dirs created\")",
+      "Bash(npm --version)",
+      "Bash(dir \"c:\\\\calculadoras-chile\")",
+      "Bash(npm install *)",
+      "Bash(npm run *)"
+    ],
+    "additionalDirectories": [
+      "c:\\calculadoras-chile"
+    ]
+  }
+}

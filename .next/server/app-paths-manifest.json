@@ -1,0 +1,23 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/contacto/page": "app/contacto/page.js",
+  "/afp/page": "app/afp/page.js",
+  "/conversor-dolar/page": "app/conversor-dolar/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/blog/[slug]/page": "app/blog/[slug]/page.js",
+  "/interes-compuesto/page": "app/interes-compuesto/page.js",
+  "/finiquito/page": "app/finiquito/page.js",
+  "/credito-hipotecario/page": "app/credito-hipotecario/page.js",
+  "/page": "app/page.js",
+  "/iva/page": "app/iva/page.js",
+  "/privacidad/page": "app/privacidad/page.js",
+  "/descuentos/page": "app/descuentos/page.js",
+  "/sueldo-liquido/page": "app/sueldo-liquido/page.js",
+  "/uf/page": "app/uf/page.js",
+  "/terminos/page": "app/terminos/page.js",
+  "/utm/page": "app/utm/page.js",
+  "/vacaciones/page": "app/vacaciones/page.js",
+  "/sobre-nosotros/page": "app/sobre-nosotros/page.js"
+}

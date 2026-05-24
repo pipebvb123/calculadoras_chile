@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,7 @@
   <meta property="og:description" content="Consulta el valor actual de la UF y convierte entre pesos chilenos y UF en segundos.">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://calculadoras-chile-5sbh.vercel.app/uf-calculadora.html">
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987300357303329" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -23,488 +22,256 @@
       {
         "@type": "Question",
         "name": "¿Cuánto vale la UF hoy en Chile?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "El valor de la UF se actualiza diariamente. Esta calculadora obtiene el valor oficial desde mindicador.cl en tiempo real. En 2026, la UF ronda los $39.000 a $40.000 pesos chilenos."
-        }
+        "acceptedAnswer": {"@type": "Answer", "text": "El valor de la UF se actualiza diariamente. Esta calculadora obtiene el valor oficial desde mindicador.cl en tiempo real. En 2026, la UF ronda los $39.000 a $40.000 pesos chilenos."}
       },
       {
         "@type": "Question",
         "name": "¿Cada cuánto se actualiza la UF?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "La UF se actualiza diariamente. El Banco Central publica todos los valores del mes siguiente el último día hábil del mes en curso, calculados según el IPC (inflación) del mes anterior."
-        }
+        "acceptedAnswer": {"@type": "Answer", "text": "La UF se actualiza diariamente. El Banco Central publica todos los valores del mes siguiente el último día hábil del mes en curso, calculados según el IPC del mes anterior."}
       },
       {
         "@type": "Question",
         "name": "¿Puede bajar la UF?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí, aunque es muy poco frecuente. Si el IPC registra una deflación (bajada de precios), el valor de la UF disminuye. En la práctica, la UF casi siempre sube o se mantiene estable."
-        }
+        "acceptedAnswer": {"@type": "Answer", "text": "Sí, aunque es muy poco frecuente. Si el IPC registra una deflación, el valor de la UF disminuye. En la práctica, la UF casi siempre sube o se mantiene estable."}
       },
       {
         "@type": "Question",
         "name": "¿Para qué se usa la UF en Chile?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "La UF se usa principalmente en créditos hipotecarios, arriendos, contratos de seguros, planes de Isapre y multas tributarias. Protege los contratos de largo plazo contra la inflación."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cómo convierto pesos chilenos a UF?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Divide la cantidad en pesos por el valor vigente de la UF. Por ejemplo, si la UF vale $39.500 y tienes $1.000.000, equivalen a 25,32 UF. Esta calculadora hace la conversión automáticamente."
-        }
+        "acceptedAnswer": {"@type": "Answer", "text": "La UF se usa principalmente en créditos hipotecarios, arriendos, contratos de seguros, planes de Isapre y multas tributarias. Protege los contratos de largo plazo contra la inflación."}
       }
     ]
   }
   </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987300357303329" crossorigin="anonymous"></script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --primary: #2563EB;
-      --primary-dark: #1D4ED8;
-      --primary-light: #EFF6FF;
-      --secondary: #059669;
-      --secondary-light: #ECFDF5;
-      --bg: #F1F5F9;
-      --card: #FFFFFF;
-      --text: #1E293B;
-      --text-muted: #64748B;
-      --text-light: #94A3B8;
-      --border: #E2E8F0;
-      --radius: 12px;
-      --shadow: 0 4px 6px -1px rgba(0,0,0,.08), 0 2px 4px -1px rgba(0,0,0,.05);
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .topnav { background: var(--primary-dark); padding: 10px 0; text-align: center; }
-    .topnav a {
-      color: rgba(255,255,255,.85); text-decoration: none;
-      font-size: 13px; margin: 0 12px; transition: color .2s;
-    }
-    .topnav a:hover, .topnav a.active { color: #fff; font-weight: 600; }
-
-    .hero {
-      background: linear-gradient(135deg, #0F4C81 0%, #1E40AF 50%, #2563EB 100%);
-      color: #fff;
-      padding: 48px 20px 40px;
-      text-align: center;
-    }
-    .hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 10px; }
-    .hero p  { font-size: 1.05rem; opacity: .88; max-width: 560px; margin: 0 auto; }
-
-    .container { max-width: 860px; margin: 0 auto; padding: 0 16px; }
-    .section { padding: 32px 0; }
-
-    .ad-slot {
-      background: #fff; border: 2px dashed var(--border); border-radius: var(--radius);
-      padding: 18px; text-align: center; color: var(--text-light); font-size: 13px; margin: 20px 0;
-    }
-    .ad-slot strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
-
-    .card {
-      background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
-      padding: 28px; margin-bottom: 24px;
-    }
-    .card h2 { font-size: 1.2rem; color: var(--primary); margin-bottom: 20px; }
-
-    /* UF VALUE DISPLAY */
+    .page-hero { background: linear-gradient(135deg, #0F4C81 0%, #1E40AF 50%, #2563EB 100%); }
     .uf-display {
       background: linear-gradient(135deg, #1E40AF, #2563EB);
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      text-align: center;
-      color: #fff;
-      margin-bottom: 24px;
-      position: relative;
-      overflow: hidden;
+      border-radius: var(--radius); padding: 32px 24px; text-align: center; color: #fff;
+      margin-bottom: 24px; position: relative; overflow: hidden;
     }
     .uf-display::before {
-      content: 'UF';
-      position: absolute;
-      right: -10px;
-      top: -20px;
-      font-size: 120px;
-      font-weight: 900;
-      opacity: .07;
-      line-height: 1;
+      content: 'UF'; position: absolute; right: -10px; top: -20px;
+      font-size: 120px; font-weight: 900; opacity: .07; line-height: 1;
     }
-    .uf-display .uf-label { font-size: .9rem; opacity: .85; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .08em; }
-    .uf-display .uf-valor { font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 800; letter-spacing: -.02em; }
-    .uf-display .uf-date  { font-size: .82rem; opacity: .75; margin-top: 8px; }
-    .uf-display .uf-source { font-size: .78rem; opacity: .6; margin-top: 4px; }
-
-    .uf-badges { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
-    .uf-badge {
-      background: rgba(255,255,255,.15);
-      border: 1px solid rgba(255,255,255,.25);
-      border-radius: 20px;
-      padding: 5px 14px;
-      font-size: .82rem;
-    }
-
-    .loading-spinner {
-      display: inline-block;
-      width: 20px; height: 20px;
-      border: 3px solid rgba(255,255,255,.3);
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* CONVERTER */
-    .converter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    @media (max-width:600px) { .converter-grid { grid-template-columns: 1fr; } }
-
-    .conv-box {
-      background: var(--bg);
-      border: 2px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-      transition: border-color .2s, box-shadow .2s;
-    }
-    .conv-box:focus-within { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,.12); }
-    .conv-box .conv-label { font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin-bottom: 10px; }
-    .conv-box input {
-      width: 100%;
-      border: none;
-      background: transparent;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text);
-      outline: none;
-    }
-    .conv-box input::placeholder { color: var(--text-light); font-weight: 400; }
-    .conv-box .conv-currency { font-size: .85rem; color: var(--text-muted); margin-top: 6px; }
-
-    .arrow-center {
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem;
-      color: var(--primary);
-    }
-
-    .result-box {
-      background: var(--secondary-light);
-      border: 2px solid var(--secondary);
-      border-radius: 10px;
-      padding: 16px 20px;
-      margin-top: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .result-box .res-label { font-size: .875rem; color: var(--secondary); font-weight: 600; }
-    .result-box .res-value { font-size: 1.5rem; font-weight: 800; color: var(--secondary); }
-
-    /* INFO TABLE */
-    .uf-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
-    .uf-table th { background: var(--primary-light); color: var(--primary); padding: 10px 14px; text-align: left; font-weight: 600; }
-    .uf-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
-    .uf-table tr:last-child td { border-bottom: none; }
-    .uf-table tr:hover td { background: #F8FAFC; }
-
-    /* INFO SECTION */
-    .info-section { background: var(--card); border-radius: var(--radius); padding: 28px; margin-bottom: 24px; }
-    .info-section h2 { color: var(--primary); margin-bottom: 14px; font-size: 1.25rem; }
-    .info-section h3 { color: var(--text); margin: 18px 0 8px; font-size: 1rem; }
-    .info-section p  { color: var(--text-muted); margin-bottom: 12px; font-size: .95rem; }
-
-    /* FAQ */
-    .faq-item { border-bottom: 1px solid var(--border); }
-    .faq-q {
-      width: 100%; text-align: left; background: none; border: none;
-      padding: 18px 0; font-size: 1rem; font-weight: 600; color: var(--text);
-      cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 10px;
-    }
-    .faq-q:hover { color: var(--primary); }
-    .faq-q .icon { font-size: 1.3rem; transition: transform .3s; flex-shrink: 0; }
-    .faq-q.open .icon { transform: rotate(45deg); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s; color: var(--text-muted); font-size: .95rem; line-height: 1.7; }
-    .faq-a.open { max-height: 300px; padding-bottom: 16px; }
-
-    footer { background: var(--text); color: rgba(255,255,255,.75); padding: 36px 20px; text-align: center; font-size: .875rem; }
-    footer h3 { color: #fff; margin-bottom: 16px; }
-    .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
-    .footer-links a { color: rgba(255,255,255,.8); text-decoration: none; transition: color .2s; }
-    .footer-links a:hover { color: #fff; }
-    .disclaimer { font-size: .78rem; opacity: .6; margin-top: 12px; }
-
-    .badge-update {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--secondary-light); color: var(--secondary);
-      border: 1px solid var(--secondary); border-radius: 20px;
-      padding: 4px 12px; font-size: .8rem; font-weight: 600; margin-bottom: 20px;
-    }
-    .badge-update::before { content: '●'; font-size: .6rem; }
+    .uf-display .uf-label { font-size:.9rem; opacity:.85; margin-bottom:8px; text-transform:uppercase; letter-spacing:.08em; }
+    .uf-display .uf-valor { font-size:clamp(2.2rem,6vw,3.2rem); font-weight:800; letter-spacing:-.02em; }
+    .uf-display .uf-date  { font-size:.82rem; opacity:.75; margin-top:8px; }
+    .uf-display .uf-source { font-size:.78rem; opacity:.6; margin-top:4px; }
+    .uf-badges { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:16px; }
+    .uf-badge { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.25); border-radius:20px; padding:5px 14px; font-size:.82rem; }
+    .loading-spinner { display:inline-block; width:20px; height:20px; border:3px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .8s linear infinite; vertical-align:middle; margin-right:8px; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .converter-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media (max-width:600px) { .converter-grid { grid-template-columns:1fr; } }
+    .conv-box { background:var(--bg); border:2px solid var(--border); border-radius:10px; padding:20px; transition:border-color .2s; }
+    .conv-box:focus-within { border-color:var(--primary); box-shadow:0 0 0 3px rgba(37,99,235,.12); }
+    .conv-box .conv-label { font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); margin-bottom:10px; }
+    .conv-box input { width:100%; border:none; background:transparent; font-size:1.4rem; font-weight:700; color:var(--text); outline:none; }
+    .result-box { background:#ECFDF5; border:2px solid #059669; border-radius:10px; padding:16px 20px; margin-top:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    .result-box .res-label { font-size:.875rem; color:#059669; font-weight:600; }
+    .result-box .res-value { font-size:1.5rem; font-weight:800; color:#059669; }
+    .badge-update { display:inline-flex; align-items:center; gap:6px; background:#ECFDF5; color:#059669; border:1px solid #059669; border-radius:20px; padding:4px 12px; font-size:.8rem; font-weight:600; margin-bottom:20px; }
+    .badge-update::before { content:'●'; font-size:.6rem; }
   </style>
 </head>
 <body>
 
-<!-- NAVEGACIÓN -->
-<nav class="topnav">
-  <a href="sueldo-liquido.html">💼 Sueldo Líquido</a>
-  <a href="uf-calculadora.html" class="active">📊 Calculadora UF</a>
-  <a href="credito-hipotecario.html">🏠 Crédito Hipotecario</a>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="container">
-    <h1>Calculadora UF Chile 2026</h1>
-    <p>Consulta el valor actual de la UF y convierte entre pesos chilenos y Unidades de Fomento al instante.</p>
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🇨🇱</span><span class="logo-text">Calculadoras<strong>Chile</strong></span></a>
+    <nav class="main-nav" id="main-nav">
+      <div class="nav-item has-dropdown">
+        <a href="index.html#calculadoras" class="nav-link active">Calculadoras ▾</a>
+        <div class="dropdown-menu">
+          <a href="sueldo-liquido.html">💼 Sueldo Líquido</a>
+          <a href="uf-calculadora.html">📊 Calculadora UF</a>
+          <a href="credito-hipotecario.html">🏠 Crédito Hipotecario</a>
+          <a href="calculadora-iva.html">🧾 Calculadora IVA</a>
+          <a href="calculadora-utm.html">📐 UTM a CLP</a>
+          <a href="calculadora-vacaciones.html">🌴 Vacaciones</a>
+          <a href="calculadora-finiquito.html">📋 Finiquito</a>
+          <a href="calculadora-interes-compuesto.html">💹 Interés Compuesto</a>
+          <a href="calculadora-descuentos.html">🏷️ Descuentos</a>
+          <a href="conversor-dolar.html">💵 Conversor Dólar</a>
+          <a href="calculadora-afp.html">🏦 Calculadora AFP</a>
+        </div>
+      </div>
+      <a href="blog/" class="nav-link">Blog</a>
+      <a href="sobre-nosotros.html" class="nav-link">Nosotros</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<main class="container">
+<div class="breadcrumbs">
+  <div class="bc-inner"><a href="index.html">Inicio</a><span class="sep">›</span><a href="index.html#calculadoras">Calculadoras</a><span class="sep">›</span><span class="current">Calculadora UF</span></div>
+</div>
 
-  <!-- ANUNCIO SUPERIOR -->
+<header class="page-hero" style="padding:48px 20px 40px; text-align:center;">
+  <div class="container">
+    <h1 style="color:#fff; font-size:clamp(1.6rem,4vw,2.4rem); font-weight:800; margin-bottom:10px;">Calculadora UF Chile 2026</h1>
+    <p style="color:#fff; opacity:.88; font-size:1.05rem; max-width:560px; margin:0 auto;">Consulta el valor actual de la UF y convierte entre pesos chilenos y Unidades de Fomento al instante.</p>
+  </div>
+</header>
+
+<main class="container" style="padding-top:28px; padding-bottom:48px">
+
   <div class="ad-slot">
-    <strong>Publicidad</strong>
-    <!-- ESPACIO ANUNCIO ADSENSE - BANNER 728x90 o responsivo -->
-    [Banner publicitario 728×90]
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <section class="section">
+  <!-- DISPLAY VALOR UF -->
+  <div class="uf-display" id="uf-display">
+    <div class="uf-label">Valor UF hoy en Chile</div>
+    <div class="uf-valor" id="uf-valor"><span class="loading-spinner"></span> Cargando...</div>
+    <div class="uf-date" id="uf-date"></div>
+    <div class="uf-source" id="uf-source"></div>
+    <div class="uf-badges" id="uf-badges"></div>
+  </div>
 
-    <!-- DISPLAY VALOR UF -->
-    <div class="uf-display" id="uf-display">
-      <div class="uf-label">Valor UF hoy en Chile</div>
-      <div class="uf-valor" id="uf-valor">
-        <span class="loading-spinner"></span> Cargando...
-      </div>
-      <div class="uf-date" id="uf-date"></div>
-      <div class="uf-source" id="uf-source"></div>
-      <div class="uf-badges" id="uf-badges"></div>
-    </div>
+  <!-- CONVERSOR -->
+  <div class="card">
+    <h2>⇄ Conversor CLP ↔ UF</h2>
+    <span class="badge-update" id="badge-uf">UF cargando...</span>
 
-    <!-- CONVERSOR -->
-    <div class="card">
-      <h2>⇄ Conversor CLP ↔ UF</h2>
-      <span class="badge-update" id="badge-uf">UF cargando...</span>
-
-      <div class="converter-grid">
-        <!-- CLP → UF -->
-        <div>
-          <div class="card" style="background:var(--bg); box-shadow:none; border:2px solid var(--border); padding:20px; margin:0">
-            <div style="font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); margin-bottom:12px">🇨🇱 Pesos Chilenos → UF</div>
-            <div class="form-group" style="margin-bottom:8px">
-              <input type="text" id="clp-input" placeholder="Ej: 1.000.000"
-                     oninput="convCLPaUF()" style="width:100%; padding:12px 14px; border:2px solid var(--border); border-radius:8px; font-size:1.1rem; font-weight:600; color:var(--text); transition:border-color .2s">
-            </div>
-            <div class="result-box" id="result-uf" style="display:none">
-              <span class="res-label">Equivale a</span>
-              <span class="res-value" id="output-uf">—</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- UF → CLP -->
-        <div>
-          <div class="card" style="background:var(--bg); box-shadow:none; border:2px solid var(--border); padding:20px; margin:0">
-            <div style="font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); margin-bottom:12px">📊 UF → Pesos Chilenos</div>
-            <div class="form-group" style="margin-bottom:8px">
-              <input type="text" id="uf-input" placeholder="Ej: 2.500"
-                     oninput="convUFaCLP()" style="width:100%; padding:12px 14px; border:2px solid var(--border); border-radius:8px; font-size:1.1rem; font-weight:600; color:var(--text); transition:border-color .2s">
-            </div>
-            <div class="result-box" id="result-clp" style="display:none">
-              <span class="res-label">Equivale a</span>
-              <span class="res-value" id="output-clp">—</span>
-            </div>
-          </div>
+    <div class="converter-grid">
+      <div class="conv-box">
+        <div class="conv-label">🇨🇱 Pesos Chilenos → UF</div>
+        <input type="text" id="clp-input" placeholder="Ej: 1.000.000" oninput="fmtClp(this); convCLPaUF()">
+        <div class="result-box" id="result-uf" style="display:none">
+          <span class="res-label">Equivale a</span>
+          <span class="res-value" id="output-uf">—</span>
         </div>
       </div>
-
-      <p style="font-size:.78rem; color:var(--text-light); text-align:center; margin-top:16px" id="conv-note">
-        * Conversión basada en el valor oficial de la UF del día.
-      </p>
+      <div class="conv-box">
+        <div class="conv-label">📊 UF → Pesos Chilenos</div>
+        <input type="text" id="uf-input" placeholder="Ej: 2.500" oninput="convUFaCLP()">
+        <div class="result-box" id="result-clp" style="display:none">
+          <span class="res-label">Equivale a</span>
+          <span class="res-value" id="output-clp">—</span>
+        </div>
+      </div>
     </div>
 
-    <!-- TABLA REFERENCIAS RÁPIDAS -->
-    <div class="card">
-      <h2>📋 Tabla de referencia rápida</h2>
-      <table class="uf-table" id="ref-tabla">
-        <thead>
-          <tr><th>UF</th><th>Pesos (CLP)</th><th>Uso típico</th></tr>
-        </thead>
+    <p style="font-size:.78rem; color:var(--text-muted); text-align:center; margin-top:16px">
+      * Conversión basada en el valor oficial de la UF del día. Fuente: Banco Central de Chile vía mindicador.cl.
+    </p>
+  </div>
+
+  <!-- TABLA REFERENCIAS RÁPIDAS -->
+  <div class="card">
+    <h2>Tabla de referencia rápida</h2>
+    <div style="overflow-x:auto">
+      <table class="data-table" id="ref-tabla">
+        <thead><tr><th>UF</th><th>Pesos (CLP)</th><th>Uso típico</th></tr></thead>
         <tbody id="ref-tbody"></tbody>
       </table>
     </div>
-
-  </section>
-
-  <!-- ANUNCIO MEDIO -->
-  <div class="ad-slot">
-    <strong>Publicidad</strong>
-    <!-- ESPACIO ANUNCIO ADSENSE - RECTÁNGULO 336x280 -->
-    [Banner publicitario central]
   </div>
 
-  <!-- INFORMACIÓN SEO -->
-  <section class="info-section">
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="prose">
     <h2>¿Qué es la UF y cómo funciona en Chile?</h2>
-    <p>
-      La Unidad de Fomento (UF) es una unidad de cuenta ajustada diariamente conforme a la variación del
-      Índice de Precios al Consumidor (IPC) de Chile. Fue creada en 1967 y actualmente es administrada
-      por el Banco Central de Chile. Su principal objetivo es proteger los contratos financieros de largo
-      plazo contra la inflación, manteniendo el valor real de las obligaciones en el tiempo.
-    </p>
+    <p>La Unidad de Fomento (UF) es una unidad de cuenta ajustada diariamente conforme a la variación del Índice de Precios al Consumidor (IPC) de Chile. Fue creada en 1967 y actualmente es administrada por el Banco Central de Chile. Su objetivo es proteger los contratos financieros de largo plazo contra la inflación.</p>
 
     <h3>¿Para qué se usa la UF en Chile?</h3>
-    <p>
-      La UF está presente en prácticamente todos los aspectos económicos del país. Los créditos hipotecarios
-      se expresan habitualmente en UF, ya que los plazos son largos (20 a 30 años) y la UF protege
-      tanto al banco como al deudor de los efectos de la inflación. También se usa en arriendos, contratos
-      de seguros, cotizaciones de obras, planes de salud de Isapre y multas tributarias, entre otros.
-    </p>
+    <p>La UF está presente en prácticamente todos los aspectos económicos del país. Los créditos hipotecarios se expresan habitualmente en UF, ya que los plazos son largos (20 a 30 años) y la UF protege tanto al banco como al deudor. También se usa en arriendos, contratos de seguros, cotizaciones de obras, planes de Isapre y multas tributarias.</p>
 
     <h3>¿Cómo se calcula el valor diario de la UF?</h3>
-    <p>
-      El Banco Central publica mensualmente los valores de la UF para el mes siguiente, calculados en
-      función del IPC del mes anterior. Los valores diarios se publican el día hábil anterior al último
-      día de cada mes. La fórmula de ajuste es lineal: el valor crece gradualmente cada día del mes
-      hasta alcanzar el valor fijado para el fin de mes.
-    </p>
+    <p>El Banco Central publica mensualmente los valores de la UF para el mes siguiente, calculados en función del IPC del mes anterior. Los valores diarios se publican el día hábil anterior al último día de cada mes. La fórmula de ajuste es lineal: el valor crece gradualmente cada día.</p>
 
     <h3>Historia y evolución de la UF</h3>
-    <p>
-      En 1990, la UF valía aproximadamente $3.600 pesos. En el año 2000, superó los $16.000 pesos.
-      En 2010 alcanzó los $21.000, y en 2020 rondaba los $28.000. Hoy, en 2026, su valor supera
-      los $38.000 pesos, lo que refleja la inflación acumulada de más de cinco décadas. Conocer la
-      evolución de la UF es clave para entender el costo real de los créditos hipotecarios en Chile.
-    </p>
+    <p>En 1990, la UF valía aproximadamente $3.600 pesos. En el año 2000, superó los $16.000. En 2010 alcanzó los $21.000, y en 2020 rondaba los $28.000. Hoy, en 2026, su valor supera los $38.000 pesos, reflejando la inflación acumulada de más de cinco décadas.</p>
 
     <h3>UF vs. inflación: ¿qué significa para tu crédito?</h3>
-    <p>
-      Si tienes un crédito hipotecario en UF, tu deuda en pesos sube cada vez que sube la UF (es decir,
-      cuando hay inflación). Esto significa que en períodos de alta inflación, como los vividos en
-      Chile en 2022, el saldo de tu crédito puede aumentar significativamente en pesos. Sin embargo,
-      a largo plazo, la UF refleja el valor real de la economía y evita distorsiones en contratos
-      de muy larga duración.
-    </p>
+    <p>Si tienes un crédito hipotecario en UF, tu deuda en pesos sube cada vez que sube la UF. Esto significa que en períodos de alta inflación, el saldo de tu crédito puede aumentar significativamente. Sin embargo, a largo plazo, la UF refleja el valor real de la economía y evita distorsiones en contratos de muy larga duración.</p>
 
-    <h3>Conversión práctica: ¿cuánto es 1000 UF en pesos?</h3>
-    <p>
-      Para convertir UF a pesos, simplemente multiplica el número de UF por el valor vigente del día.
-      Por ejemplo, si la UF está a $38.500 y necesitas saber cuánto son 1.000 UF:
-      1.000 × $38.500 = <strong>$38.500.000 pesos</strong>. Esta herramienta hace esa conversión
-      automáticamente con el valor actualizado.
-    </p>
-  </section>
-
-  <!-- FAQ -->
-  <section class="card">
-    <h2>Preguntas Frecuentes sobre la UF</h2>
-    <div id="faq-container"></div>
-  </section>
-
-  <!-- ANUNCIO INFERIOR -->
-  <div class="ad-slot" style="margin-bottom:32px">
-    <strong>Publicidad</strong>
-    <!-- ESPACIO ANUNCIO ADSENSE - BANNER INFERIOR -->
-    [Banner publicitario inferior]
+    <div class="tip-box">
+      <strong>Fuente oficial:</strong> El valor de la UF se publica en el sitio web del Banco Central de Chile (bcentral.cl). Esta calculadora usa la API pública de mindicador.cl que replica esos datos en tiempo real.
+    </div>
   </div>
 
+  <div class="card">
+    <h2>Preguntas Frecuentes sobre la UF</h2>
+    <div class="faq-item">
+      <button class="faq-q">¿Cada cuánto se actualiza la UF? <span class="faq-icon">+</span></button>
+      <div class="faq-a">La UF se actualiza diariamente. El Banco Central publica todos los valores del mes siguiente el último día hábil del mes en curso. Así, cada día tiene su valor exacto, que crece gradualmente según la inflación del mes anterior (IPC).</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Dónde puedo ver el valor oficial de la UF? <span class="faq-icon">+</span></button>
+      <div class="faq-a">El valor oficial lo publica el Banco Central de Chile en su sitio web (bcentral.cl). También está disponible en el SII, en mindicador.cl, y en todos los bancos e instituciones financieras.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Puede bajar la UF? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Sí, aunque es muy poco frecuente. Si el IPC registra una deflación, el valor de la UF disminuye. Esto ocurrió brevemente en Chile en 1999. En la práctica, la UF casi siempre sube o se mantiene estable.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Qué pasa con mi crédito en UF cuando sube la inflación? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Si sube la inflación y tienes un crédito en UF, el valor en pesos de tu deuda aumenta. Sin embargo, tu dividendo en UF no cambia. Lo que cambia es cuántos pesos chilenos debes pagar por esas UF.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Conviene pedir un crédito en UF o en pesos? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Depende del contexto económico. En períodos de baja inflación, la UF es estable y conveniente. En períodos de alta inflación, los créditos en pesos fijos pueden ser más convenientes. Los créditos a tasa fija en pesos eliminan la incertidumbre inflacionaria pero suelen tener tasas nominales más altas.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿El arriendo en UF puede subir mucho? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Sí. Si tienes un contrato de arriendo indexado en UF y la inflación es alta, tu arriendo en pesos puede subir considerablemente. Por ley en Chile, si el contrato no especifica la moneda, se entiende que es en pesos. Si dice UF, el arriendo sube con la UF.</div>
+    </div>
+  </div>
+
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8987300357303329" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 </main>
 
-<footer>
-  <div class="container">
-    <h3>Calculadoras Financieras para Chile</h3>
-    <nav class="footer-links">
-      <a href="sueldo-liquido.html">💼 Calculadora Sueldo Líquido</a>
-      <a href="uf-calculadora.html">📊 Calculadora UF</a>
-      <a href="credito-hipotecario.html">🏠 Simulador Crédito Hipotecario</a>
-    </nav>
-    <p>Herramientas financieras gratuitas para trabajadores y familias chilenas.</p>
-    <p class="disclaimer">
-      El valor de la UF se obtiene de mindicador.cl (API pública). Usamos un valor estimado si la
-      conexión falla. Para decisiones financieras importantes, confirma en el sitio del Banco Central de Chile.
-    </p>
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand"><a href="index.html" class="footer-logo"><span style="font-size:1.4rem">🇨🇱</span><span>Calculadoras<strong>Chile</strong></span></a><p>Herramientas financieras gratuitas para Chile.</p></div>
+    <div class="footer-col"><h4>Calculadoras</h4><a href="sueldo-liquido.html">Sueldo Líquido</a><a href="calculadora-finiquito.html">Finiquito</a><a href="calculadora-vacaciones.html">Vacaciones</a><a href="calculadora-afp.html">AFP</a></div>
+    <div class="footer-col"><h4>Recursos</h4><a href="blog/">Blog</a><a href="uf-calculadora.html">UF</a><a href="credito-hipotecario.html">Hipotecario</a></div>
+    <div class="footer-col"><h4>Empresa</h4><a href="sobre-nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos</a></div>
   </div>
+  <div class="footer-bottom"><span>© 2026 CalculadorasChile.cl</span><span>Valor UF de mindicador.cl / Banco Central de Chile.</span></div>
 </footer>
 
+<script src="js/app.js"></script>
 <script>
-  // ─── ESTADO ───────────────────────────────────────────────────────────────
-  let UFvalue = 38500;   // Valor de respaldo
-  let UFdate  = 'Valor estimado';
-  let loaded  = false;
+  let UFvalue = 38500;
 
-  // ─── OBTENER VALOR UF DESDE API ───────────────────────────────────────────
-  async function fetchUF() {
-    try {
-      const resp = await fetch('https://mindicador.cl/api/uf', { signal: AbortSignal.timeout(5000) });
-      if (!resp.ok) throw new Error('HTTP ' + resp.status);
-      const data = await resp.json();
-      if (data.serie && data.serie.length > 0) {
-        UFvalue = data.serie[0].valor;
-        const raw = data.serie[0].fecha;
-        const d = new Date(raw);
-        UFdate = d.toLocaleDateString('es-CL', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
-        loaded = true;
-        updateDisplay(true);
-      }
-    } catch(e) {
-      updateDisplay(false);
-    }
+  const refItems = [
+    [0.5,  'Gastos mínimos / copagos'],
+    [1,    'Pago mensual típico menor'],
+    [10,   'Auto usado / ahorro inicial'],
+    [100,  'Pie hipotecario mínimo'],
+    [500,  'Autos / remodelaciones'],
+    [1000, 'Departamentos pequeños'],
+    [2000, 'Casas medianas Chile'],
+    [3000, 'Propiedades premium'],
+    [5000, 'Propiedades de lujo'],
+  ];
+
+  function fmtClp(el) {
+    const raw = el.value.replace(/\D/g,'');
+    el.value = raw ? parseInt(raw, 10).toLocaleString('es-CL') : '';
   }
 
-  function updateDisplay(isLive) {
-    const val = formatCLP(UFvalue);
-    document.getElementById('uf-valor').innerHTML = val;
-    document.getElementById('uf-date').textContent =
-      isLive ? `Actualizado: ${UFdate}` : 'Valor estimado — sin conexión a la API';
-    document.getElementById('uf-source').textContent =
-      isLive ? 'Fuente: mindicador.cl (Banco Central de Chile)' : 'Fuente: valor de referencia manual';
-
-    const badges = document.getElementById('uf-badges');
-    const calcRefs = [100, 500, 1000, 2000];
-    badges.innerHTML = calcRefs.map(uf =>
-      `<div class="uf-badge">${uf} UF = ${formatCLP(uf * UFvalue)}</div>`
-    ).join('');
-
-    document.getElementById('badge-uf').textContent = `1 UF = ${formatCLP(UFvalue)}`;
-
-    // Tabla de referencia
-    buildRefTable();
-
-    // Re-calcular si hay valores en los inputs
-    if (document.getElementById('clp-input').value) convCLPaUF();
-    if (document.getElementById('uf-input').value) convUFaCLP();
-  }
-
-  // ─── FORMATEO ─────────────────────────────────────────────────────────────
-  function formatCLP(n) {
-    return '$' + Math.round(n).toLocaleString('es-CL');
-  }
-
-  function formatUF(n) {
-    return n.toLocaleString('es-CL', { minimumFractionDigits: 4, maximumFractionDigits: 4 }) + ' UF';
-  }
-
-  // ─── CONVERSIONES ─────────────────────────────────────────────────────────
   function convCLPaUF() {
     const raw = document.getElementById('clp-input').value.replace(/\./g,'').replace(',','.');
     const clp = parseFloat(raw);
     const box = document.getElementById('result-uf');
-    if (!clp || clp <= 0) { box.style.display = 'none'; return; }
-    const uf = clp / UFvalue;
-    document.getElementById('output-uf').textContent = formatUF(uf);
+    if (!clp || clp <= 0) { box.style.display='none'; return; }
+    document.getElementById('output-uf').textContent = formatUF(clp / UFvalue, 4);
     box.style.display = 'flex';
   }
 
@@ -512,93 +279,46 @@
     const raw = document.getElementById('uf-input').value.replace(',','.');
     const uf  = parseFloat(raw);
     const box = document.getElementById('result-clp');
-    if (!uf || uf <= 0) { box.style.display = 'none'; return; }
-    const clp = uf * UFvalue;
-    document.getElementById('output-clp').textContent = formatCLP(clp);
+    if (!uf || uf <= 0) { box.style.display='none'; return; }
+    document.getElementById('output-clp').textContent = formatCLP(uf * UFvalue);
     box.style.display = 'flex';
   }
 
-  // Formatear input CLP
-  document.getElementById('clp-input').addEventListener('input', function() {
-    const raw = this.value.replace(/\D/g,'');
-    this.value = raw ? parseInt(raw, 10).toLocaleString('es-CL') : '';
-    convCLPaUF();
-  });
-
-  // ─── TABLA REFERENCIAS ────────────────────────────────────────────────────
-  const refItems = [
-    [0.5,   'Gastos mínimos / copagos'],
-    [1,     'Pago mensual típico menor'],
-    [10,    'Auto usado / ahorro inicial'],
-    [100,   'Pie hipotecario mínimo'],
-    [500,   'Autos / remodelaciones'],
-    [1000,  'Departamentos pequeños'],
-    [2000,  'Casas medianas Chile'],
-    [3000,  'Propiedades premium'],
-    [5000,  'Propiedades de lujo'],
-  ];
-
   function buildRefTable() {
-    const tbody = document.getElementById('ref-tbody');
-    tbody.innerHTML = refItems.map(([uf, uso]) => `
-      <tr>
-        <td><strong>${uf.toLocaleString('es-CL')} UF</strong></td>
-        <td>${formatCLP(uf * UFvalue)}</td>
-        <td style="color:var(--text-muted); font-size:.85rem">${uso}</td>
-      </tr>
-    `).join('');
+    document.getElementById('ref-tbody').innerHTML = refItems.map(([uf, uso]) =>
+      `<tr><td><strong>${uf.toLocaleString('es-CL')} UF</strong></td><td>${formatCLP(uf * UFvalue)}</td><td style="color:var(--text-muted); font-size:.85rem">${uso}</td></tr>`
+    ).join('');
   }
 
-  // ─── FAQ ──────────────────────────────────────────────────────────────────
-  const faqs = [
-    {
-      q: '¿Cada cuánto se actualiza la UF?',
-      a: 'La UF se actualiza diariamente. El Banco Central publica todos los valores del mes siguiente el último día hábil del mes en curso. Así, cada día tiene su valor exacto, que crece gradualmente según la inflación del mes anterior (IPC).'
-    },
-    {
-      q: '¿Dónde puedo ver el valor oficial de la UF?',
-      a: 'El valor oficial lo publica el Banco Central de Chile en su sitio web (bcentral.cl). También está disponible en el SII, en mindicador.cl, y en todos los bancos e instituciones financieras.'
-    },
-    {
-      q: '¿Puede bajar la UF?',
-      a: 'Sí, aunque es muy poco frecuente. Si el IPC registra una deflación (bajada de precios), el valor de la UF disminuye. Esto ocurrió brevemente en Chile en 1999. En la práctica, la UF casi siempre sube o se mantiene estable.'
-    },
-    {
-      q: '¿Qué pasa con mi crédito en UF cuando sube la inflación?',
-      a: 'Si subes la inflación y tienes un crédito en UF, el valor en pesos de tu deuda aumenta. Sin embargo, tu dividendo en UF no cambia (sigue siendo el mismo número de UF). Lo que cambia es cuántos pesos chilenos debes pagar por esas UF.'
-    },
-    {
-      q: '¿Conviene pedir un crédito en UF o en pesos?',
-      a: 'Depende del contexto económico. En períodos de baja inflación, la UF es estable y conveniente. En períodos de alta inflación, los créditos en pesos fijos pueden ser más convenientes. Los créditos a tasa fija en pesos eliminan la incertidumbre inflacionaria pero suelen tener tasas nominales más altas.'
-    },
-    {
-      q: '¿El arriendo en UF puede subir mucho?',
-      a: 'Sí. Si tienes un contrato de arriendo indexado en UF y la inflación es alta, tu arriendo en pesos puede subir considerablemente. Por ley en Chile, si el contrato no especifica la moneda, se entiende que es en pesos. Si el contrato dice UF, el arriendo sube con la UF.'
-    }
-  ];
-
-  const faqContainer = document.getElementById('faq-container');
-  faqs.forEach((item, i) => {
-    faqContainer.innerHTML += `
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(${i})" id="faq-q-${i}">
-          ${item.q} <span class="icon">+</span>
-        </button>
-        <div class="faq-a" id="faq-a-${i}">${item.a}</div>
-      </div>
-    `;
-  });
-
-  function toggleFaq(i) {
-    const btn = document.getElementById(`faq-q-${i}`);
-    const ans = document.getElementById(`faq-a-${i}`);
-    const open = ans.classList.toggle('open');
-    btn.classList.toggle('open', open);
+  function updateDisplay(isLive, date) {
+    document.getElementById('uf-valor').textContent = formatCLP(UFvalue);
+    document.getElementById('uf-date').textContent   = isLive ? `Actualizado: ${date}` : 'Valor estimado — sin conexión a la API';
+    document.getElementById('uf-source').textContent = isLive ? 'Fuente: mindicador.cl (Banco Central de Chile)' : 'Fuente: valor de referencia manual';
+    const calcRefs = [100, 500, 1000, 2000];
+    document.getElementById('uf-badges').innerHTML = calcRefs.map(uf =>
+      `<div class="uf-badge">${uf} UF = ${formatCLP(uf * UFvalue)}</div>`
+    ).join('');
+    document.getElementById('badge-uf').textContent = '1 UF = ' + formatCLP(UFvalue);
+    buildRefTable();
+    if (document.getElementById('clp-input').value) convCLPaUF();
+    if (document.getElementById('uf-input').value) convUFaCLP();
   }
 
-  // ─── INICIALIZAR ──────────────────────────────────────────────────────────
-  updateDisplay(false); // Mostrar valor estimado inmediatamente
-  fetchUF();            // Luego intentar obtener valor real
+  async function fetchUF() {
+    try {
+      const resp = await fetch('https://mindicador.cl/api/uf', { signal: AbortSignal.timeout(5000) });
+      if (!resp.ok) throw new Error();
+      const data = await resp.json();
+      if (data.serie && data.serie.length > 0) {
+        UFvalue = data.serie[0].valor;
+        const d = new Date(data.serie[0].fecha);
+        updateDisplay(true, d.toLocaleDateString('es-CL',{weekday:'long',year:'numeric',month:'long',day:'numeric'}));
+      }
+    } catch(e) { updateDisplay(false, ''); }
+  }
+
+  updateDisplay(false, '');
+  fetchUF();
 </script>
 </body>
 </html>

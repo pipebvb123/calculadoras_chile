@@ -1,383 +1,664 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadoras Financieras Chile 2026 | Sueldo, UF y Crédito Hipotecario</title>
-  <meta name="description" content="Herramientas financieras gratuitas para Chile: calculadora de sueldo líquido, valor UF actualizado y simulador de crédito hipotecario. Gratis y sin registro.">
-  <meta name="keywords" content="calculadoras financieras Chile, sueldo líquido Chile, valor UF hoy, simulador crédito hipotecario Chile">
+  <title>Calculadoras Financieras Chile 2026 | Portal Financiero Gratuito</title>
+  <meta name="description" content="Portal de calculadoras financieras gratuitas para Chile: sueldo líquido, UF, crédito hipotecario, IVA, finiquito, vacaciones, AFP y más. Actualizadas 2026.">
+  <meta name="keywords" content="calculadoras financieras Chile, sueldo líquido, valor UF, crédito hipotecario, calculadora IVA Chile, finiquito Chile, calculadora AFP">
   <meta name="robots" content="index, follow">
+  <meta name="author" content="CalculadorasChile.cl">
   <meta name="google-site-verification" content="N3HdPdfi_4NhoQAZbELZeKvUz7QzkgqBTkc9AaUZbvA" />
-  <meta property="og:title" content="Calculadoras Financieras Chile 2026">
-  <meta property="og:description" content="Sueldo líquido, UF y crédito hipotecario. Herramientas gratis para Chile.">
+  <link rel="canonical" href="https://calculadoras-chile-5sbh.vercel.app/">
+  <meta property="og:title" content="Calculadoras Financieras Chile 2026 | Portal Financiero Gratuito">
+  <meta property="og:description" content="Más de 10 herramientas financieras gratuitas para Chile. Sueldo líquido, UF, crédito hipotecario, IVA, finiquito y mucho más.">
   <meta property="og:type" content="website">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --primary: #2563EB;
-      --primary-dark: #1D4ED8;
-      --secondary: #059669;
-      --bg: #F1F5F9;
-      --card: #FFFFFF;
-      --text: #1E293B;
-      --text-muted: #64748B;
-      --border: #E2E8F0;
-      --radius: 16px;
-      --shadow: 0 4px 6px -1px rgba(0,0,0,.08), 0 2px 4px -1px rgba(0,0,0,.05);
-      --shadow-lg: 0 20px 40px -10px rgba(0,0,0,.15);
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* HERO */
-    .hero {
-      background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #1D4ED8 100%);
-      color: #fff;
-      padding: 64px 20px 80px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(37,99,235,.3) 0%, transparent 70%);
-    }
-    .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 99px;
-      padding: 6px 18px;
-      font-size: .8rem;
-      font-weight: 600;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 16px;
-      letter-spacing: -.02em;
-    }
-    .hero h1 span { color: #60A5FA; }
-    .hero p {
-      font-size: 1.1rem;
-      opacity: .85;
-      max-width: 520px;
-      margin: 0 auto 32px;
-      line-height: 1.6;
-    }
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      flex-wrap: wrap;
-      margin-top: 32px;
-    }
-    .hero-stat { text-align: center; }
-    .hero-stat .val { font-size: 1.8rem; font-weight: 800; color: #60A5FA; }
-    .hero-stat .lbl { font-size: .78rem; opacity: .7; margin-top: 2px; }
-
-    /* CARDS */
-    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-    .tools-section { padding: 60px 0; flex: 1; }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .section-title h2 { font-size: 1.8rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
-    .section-title p  { color: var(--text-muted); font-size: 1rem; }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-
-    .tool-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 32px 28px;
-      text-decoration: none;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      transition: transform .25s, box-shadow .25s;
-      border: 2px solid transparent;
-      position: relative;
-      overflow: hidden;
-    }
-    .tool-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: var(--card-accent);
-      border-radius: var(--radius) var(--radius) 0 0;
-    }
-    .tool-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--card-accent);
-    }
-
-    .card-sueldo  { --card-accent: #2563EB; }
-    .card-uf      { --card-accent: #059669; }
-    .card-credito { --card-accent: #7C3AED; }
-
-    .card-icon {
-      font-size: 2.4rem;
-      margin-bottom: 16px;
-      display: block;
-    }
-    .card-tag {
-      font-size: .72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: var(--card-accent);
-      margin-bottom: 8px;
-    }
-    .tool-card h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-    .tool-card p {
-      font-size: .9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      flex: 1;
-      margin-bottom: 24px;
-    }
-    .card-features {
-      list-style: none;
-      margin-bottom: 24px;
-    }
-    .card-features li {
-      font-size: .82rem;
-      color: var(--text-muted);
-      padding: 3px 0;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .card-features li::before { content: '✓'; color: var(--card-accent); font-weight: 700; }
-
-    .card-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--card-accent);
-      color: #fff;
-      padding: 13px 18px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: .95rem;
-      transition: opacity .2s;
-    }
-    .card-btn:hover { opacity: .9; }
-    .card-btn .arrow { font-size: 1.1rem; }
-
-    /* WHY SECTION */
-    .why-section {
-      background: var(--card);
-      padding: 56px 0;
-      border-top: 1px solid var(--border);
-    }
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 32px;
-      text-align: center;
-    }
-    .why-item .why-icon { font-size: 2rem; margin-bottom: 12px; }
-    .why-item h4 { font-weight: 700; margin-bottom: 6px; }
-    .why-item p  { font-size: .875rem; color: var(--text-muted); }
-
-    /* FOOTER */
-    footer {
-      background: #0F172A;
-      color: rgba(255,255,255,.6);
-      padding: 40px 20px;
-      text-align: center;
-      font-size: .875rem;
-    }
-    footer .footer-brand { color: #fff; font-weight: 700; font-size: 1.1rem; margin-bottom: 16px; }
-    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
-    .footer-links a { color: rgba(255,255,255,.7); text-decoration: none; transition: color .2s; }
-    .footer-links a:hover { color: #fff; }
-    footer .disclaimer { font-size: .75rem; opacity: .5; margin-top: 12px; }
-
-    @media (max-width: 480px) {
-      .hero { padding: 48px 16px 60px; }
-      .hero-stats { gap: 20px; }
-      .tools-section { padding: 40px 0; }
-      .tool-card { padding: 24px 20px; }
-    }
-  </style>
-  <!-- Google AdSense -->
+  <meta property="og:url" content="https://calculadoras-chile-5sbh.vercel.app/">
+  <meta property="og:locale" content="es_CL">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calculadoras Financieras Chile 2026">
+  <meta name="twitter:description" content="Herramientas financieras gratuitas para Chile. Sin registro, sin publicidad molesta.">
+  <link rel="stylesheet" href="css/styles.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987300357303329" crossorigin="anonymous"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Calculadoras Chile",
+    "name": "CalculadorasChile.cl",
     "url": "https://calculadoras-chile-5sbh.vercel.app/",
-    "description": "Herramientas financieras gratuitas para Chile: calculadora de sueldo líquido, valor UF y simulador de crédito hipotecario.",
+    "description": "Portal de herramientas financieras gratuitas para Chile: calculadoras de sueldo, UF, hipotecas, IVA, finiquito y más.",
     "inLanguage": "es-CL",
     "publisher": {
       "@type": "Organization",
-      "name": "Calculadoras Chile",
-      "url": "https://calculadoras-chile-5sbh.vercel.app/"
+      "name": "CalculadorasChile.cl",
+      "url": "https://calculadoras-chile-5sbh.vercel.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://calculadoras-chile-5sbh.vercel.app/favicon.ico"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://calculadoras-chile-5sbh.vercel.app/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
     }
   }
   </script>
+  <style>
+    /* ─── HERO ─── */
+    .home-hero {
+      background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #1D4ED8 100%);
+      color: #fff;
+      padding: 72px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .home-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(37,99,235,.35) 0%, transparent 65%);
+    }
+    .home-hero-content { position: relative; z-index: 1; max-width: 740px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 99px;
+      padding: 6px 20px;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .home-hero h1 {
+      font-size: clamp(2rem, 5.5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.13;
+      margin-bottom: 18px;
+      letter-spacing: -.025em;
+    }
+    .home-hero h1 span { color: #60A5FA; }
+    .home-hero .lead {
+      font-size: 1.1rem;
+      opacity: .85;
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .hero-cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-hero-primary {
+      background: #fff; color: #1D4ED8; font-weight: 800;
+      padding: 14px 28px; border-radius: 10px; text-decoration: none;
+      font-size: 1rem; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 14px rgba(0,0,0,.2);
+    }
+    .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+    .btn-hero-outline {
+      background: rgba(255,255,255,.1); color: #fff; font-weight: 700;
+      padding: 14px 28px; border-radius: 10px; text-decoration: none;
+      font-size: 1rem; border: 1px solid rgba(255,255,255,.3);
+      transition: background .2s;
+    }
+    .btn-hero-outline:hover { background: rgba(255,255,255,.18); }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-stat .val { font-size: 2rem; font-weight: 800; color: #60A5FA; }
+    .hero-stat .lbl { font-size: .75rem; opacity: .7; margin-top: 2px; }
+
+    /* ─── SEARCH BAR ─── */
+    .search-section {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+    }
+    .search-inner { max-width: 600px; margin: 0 auto; position: relative; }
+    .search-inner input {
+      width: 100%; padding: 14px 48px 14px 18px;
+      border: 2px solid var(--border); border-radius: 99px;
+      font-size: .95rem; color: var(--text); background: var(--bg);
+      transition: border-color .2s, box-shadow .2s; outline: none;
+    }
+    .search-inner input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,.12); }
+    .search-inner .search-icon {
+      position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      color: var(--text-muted); font-size: 1rem; pointer-events: none;
+    }
+
+    /* ─── WHY SECTION ─── */
+    .why-item {
+      text-align: center; padding: 16px 8px;
+    }
+    .why-icon { font-size: 2.2rem; margin-bottom: 10px; display: block; }
+    .why-item h4 { font-weight: 700; margin-bottom: 6px; font-size: 1rem; }
+    .why-item p { font-size: .875rem; color: var(--text-muted); }
+
+    /* ─── TOPICS ─── */
+    .topic-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--primary-light); color: var(--primary);
+      border-radius: 99px; padding: 6px 14px;
+      text-decoration: none; font-size: .82rem; font-weight: 600;
+      transition: all .2s; border: 1px solid transparent;
+    }
+    .topic-pill:hover { background: var(--primary); color: #fff; }
+
+    /* ─── POPULAR SECTION ─── */
+    .popular-list { display: flex; flex-direction: column; gap: 10px; }
+    .popular-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px; background: var(--bg);
+      border-radius: 10px; text-decoration: none; color: var(--text);
+      transition: all .2s; border: 2px solid transparent;
+    }
+    .popular-item:hover { background: var(--primary-light); border-color: var(--primary); }
+    .popular-rank { font-size: 1.1rem; font-weight: 800; color: var(--primary); min-width: 28px; }
+    .popular-info { flex: 1; }
+    .popular-info .name { font-weight: 700; font-size: .95rem; }
+    .popular-info .desc { font-size: .8rem; color: var(--text-muted); }
+    .popular-arrow { color: var(--primary); font-size: 1.1rem; }
+  </style>
 </head>
 <body>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">🇨🇱 Herramientas para Chile · 2026</div>
-    <h1>Calculadoras <span>Financieras</span><br>para Chile</h1>
-    <p>Herramientas gratuitas, rápidas y precisas para tomar mejores decisiones con tu dinero.</p>
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="val">3</div><div class="lbl">Herramientas gratis</div></div>
-      <div class="hero-stat"><div class="val">0</div><div class="lbl">Registro requerido</div></div>
-      <div class="hero-stat"><div class="val">100%</div><div class="lbl">En español</div></div>
-    </div>
+<!-- HEADER -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🇨🇱</span>
+      <span class="logo-text">Calculadoras<strong>Chile</strong></span>
+    </a>
+    <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+      <div class="nav-item has-dropdown">
+        <a href="#calculadoras" class="nav-link">Calculadoras ▾</a>
+        <div class="dropdown-menu" role="menu">
+          <a href="sueldo-liquido.html">💼 Sueldo Líquido</a>
+          <a href="uf-calculadora.html">📊 Calculadora UF</a>
+          <a href="credito-hipotecario.html">🏠 Crédito Hipotecario</a>
+          <a href="calculadora-iva.html">🧾 Calculadora IVA</a>
+          <a href="calculadora-utm.html">📐 UTM a CLP</a>
+          <a href="calculadora-vacaciones.html">🌴 Vacaciones</a>
+          <a href="calculadora-finiquito.html">📋 Finiquito</a>
+          <a href="calculadora-interes-compuesto.html">💹 Interés Compuesto</a>
+          <a href="calculadora-descuentos.html">🏷️ Descuentos</a>
+          <a href="conversor-dolar.html">💵 Conversor Dólar</a>
+          <a href="calculadora-afp.html">🏦 Calculadora AFP</a>
+        </div>
+      </div>
+      <a href="blog/" class="nav-link">Blog</a>
+      <a href="sobre-nosotros.html" class="nav-link">Nosotros</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
+<!-- HERO -->
+<section class="home-hero">
+  <div class="home-hero-content">
+    <div class="hero-badge">🇨🇱 Herramientas Financieras · Chile 2026</div>
+    <h1>Tu portal de <span>calculadoras</span><br>financieras para Chile</h1>
+    <p class="lead">Más de 10 herramientas gratuitas para tomar mejores decisiones con tu dinero. Sin registro, sin letra chica.</p>
+    <div class="hero-cta-row">
+      <a href="#calculadoras" class="btn-hero-primary">Ver todas las calculadoras</a>
+      <a href="sueldo-liquido.html" class="btn-hero-outline">Calcular mi sueldo →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="val">+10</div><div class="lbl">Calculadoras gratis</div></div>
+      <div class="hero-stat"><div class="val">0</div><div class="lbl">Registro requerido</div></div>
+      <div class="hero-stat"><div class="val">100%</div><div class="lbl">Actualizadas 2026</div></div>
+      <div class="hero-stat"><div class="val">0$</div><div class="lbl">Costo para ti</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSCADOR -->
+<div class="search-section">
+  <div class="search-inner">
+    <input type="text" id="calc-search" placeholder="Buscar calculadora: sueldo, UF, IVA, finiquito..." aria-label="Buscar calculadora">
+    <span class="search-icon">🔍</span>
+  </div>
+</div>
+
 <main>
-  <!-- HERRAMIENTAS -->
-  <section class="tools-section">
-    <div class="container">
-      <div class="section-title">
-        <h2>Elige tu calculadora</h2>
-        <p>Selecciona la herramienta que necesitas. Son gratis y funcionan al instante.</p>
+
+<!-- ANUNCIO SUPERIOR -->
+<div class="container" style="padding-top:20px">
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8987300357303329"
+         data-ad-slot="auto"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
+
+<!-- CALCULADORAS DESTACADAS -->
+<section class="section-lg" id="calculadoras">
+  <div class="container-lg">
+    <div class="section-title">
+      <span class="tag">Herramientas Gratuitas</span>
+      <h2>Calculadoras más usadas</h2>
+      <p>Elige la herramienta que necesitas. Resultados instantáneos, sin registro.</p>
+    </div>
+    <div class="grid-3" id="calc-grid">
+
+      <!-- SUELDO LÍQUIDO -->
+      <a href="sueldo-liquido.html" class="tool-card" style="--card-accent:#2563EB" data-name="sueldo líquido neto bruto AFP descuentos remuneración">
+        <span class="card-icon">💼</span>
+        <div class="card-tag">Remuneraciones</div>
+        <h3>Calculadora de Sueldo Líquido</h3>
+        <p>Descubre cuánto recibirás en tu cuenta después de descontar AFP, salud e impuesto a la renta.</p>
+        <ul class="card-features">
+          <li>7 AFP con tasas reales 2026</li>
+          <li>Fonasa e Isapre incluidos</li>
+          <li>Impuesto único por tramos</li>
+          <li>Tabla de descuentos detallada</li>
+        </ul>
+        <div class="card-btn">Calcular sueldo <span>→</span></div>
+      </a>
+
+      <!-- UF -->
+      <a href="uf-calculadora.html" class="tool-card" style="--card-accent:#059669" data-name="UF unidad fomento valor hoy CLP pesos conversor">
+        <span class="card-icon">📊</span>
+        <div class="card-tag">Indicadores</div>
+        <h3>Calculadora de UF</h3>
+        <p>Consulta el valor de la UF actualizado hoy y convierte entre pesos chilenos y Unidades de Fomento.</p>
+        <ul class="card-features">
+          <li>Valor UF en tiempo real</li>
+          <li>Conversor CLP ↔ UF</li>
+          <li>Tabla de referencias rápidas</li>
+          <li>Fuente: Banco Central Chile</li>
+        </ul>
+        <div class="card-btn">Ver valor UF <span>→</span></div>
+      </a>
+
+      <!-- CRÉDITO HIPOTECARIO -->
+      <a href="credito-hipotecario.html" class="tool-card" style="--card-accent:#7C3AED" data-name="crédito hipotecario dividendo vivienda casa préstamo banco">
+        <span class="card-icon">🏠</span>
+        <div class="card-tag">Vivienda</div>
+        <h3>Simulador Crédito Hipotecario</h3>
+        <p>Calcula tu dividendo mensual, el costo total y la tabla de amortización completa de tu crédito.</p>
+        <ul class="card-features">
+          <li>Cálculo en UF o CLP</li>
+          <li>Dividendo mensual exacto</li>
+          <li>Tabla de amortización completa</li>
+          <li>Gráfico capital vs intereses</li>
+        </ul>
+        <div class="card-btn">Simular crédito <span>→</span></div>
+      </a>
+
+      <!-- IVA -->
+      <a href="calculadora-iva.html" class="tool-card" style="--card-accent:#DC2626" data-name="IVA impuesto valor agregado 19% precio neto bruto">
+        <span class="card-icon">🧾</span>
+        <div class="card-tag">Impuestos</div>
+        <h3>Calculadora de IVA</h3>
+        <p>Calcula el IVA del 19% al instante: agrega o extrae IVA de cualquier monto en pesos chilenos.</p>
+        <ul class="card-features">
+          <li>Agregar IVA al precio neto</li>
+          <li>Extraer IVA del precio final</li>
+          <li>Desglose automático</li>
+          <li>Tabla de montos comunes</li>
+        </ul>
+        <div class="card-btn">Calcular IVA <span>→</span></div>
+      </a>
+
+      <!-- UTM -->
+      <a href="calculadora-utm.html" class="tool-card" style="--card-accent:#0891B2" data-name="UTM unidad tributaria mensual CLP pesos conversión">
+        <span class="card-icon">📐</span>
+        <div class="card-tag">Tributario</div>
+        <h3>Conversor UTM a CLP</h3>
+        <p>Convierte Unidades Tributarias Mensuales a pesos chilenos con el valor oficial actualizado del SII.</p>
+        <ul class="card-features">
+          <li>Valor UTM 2026 actualizado</li>
+          <li>Conversor rápido UTM ↔ CLP</li>
+          <li>Tabla de referencias clave</li>
+          <li>Utilidad SII y tributación</li>
+        </ul>
+        <div class="card-btn">Convertir UTM <span>→</span></div>
+      </a>
+
+      <!-- FINIQUITO -->
+      <a href="calculadora-finiquito.html" class="tool-card" style="--card-accent:#EA580C" data-name="finiquito liquidación despido renuncia días trabajados">
+        <span class="card-icon">📋</span>
+        <div class="card-tag">Laboral</div>
+        <h3>Calculadora de Finiquito</h3>
+        <p>Estima el monto de tu finiquito según los días trabajados, tipo de desvinculación y tu sueldo.</p>
+        <ul class="card-features">
+          <li>Causales de término</li>
+          <li>Vacaciones proporcionales</li>
+          <li>Indemnización por años</li>
+          <li>Feriados proporcionales</li>
+        </ul>
+        <div class="card-btn">Calcular finiquito <span>→</span></div>
+      </a>
+
+      <!-- VACACIONES -->
+      <a href="calculadora-vacaciones.html" class="tool-card" style="--card-accent:#16A34A" data-name="vacaciones días hábiles proporcional descanso anual">
+        <span class="card-icon">🌴</span>
+        <div class="card-tag">Laboral</div>
+        <h3>Calculadora de Vacaciones</h3>
+        <p>Calcula los días de vacaciones que tienes acumulados y su equivalente en pesos chilenos.</p>
+        <ul class="card-features">
+          <li>Días hábiles acumulados</li>
+          <li>Vacaciones proporcionales</li>
+          <li>Compensación en dinero</li>
+          <li>Ley 18.620 Chile</li>
+        </ul>
+        <div class="card-btn">Calcular vacaciones <span>→</span></div>
+      </a>
+
+      <!-- INTERÉS COMPUESTO -->
+      <a href="calculadora-interes-compuesto.html" class="tool-card" style="--card-accent:#7C3AED" data-name="interés compuesto inversión ahorro rentabilidad plazo">
+        <span class="card-icon">💹</span>
+        <div class="card-tag">Inversiones</div>
+        <h3>Interés Compuesto</h3>
+        <p>Simula el crecimiento de tus ahorros o inversiones a lo largo del tiempo con interés compuesto.</p>
+        <ul class="card-features">
+          <li>Capital inicial + aportes</li>
+          <li>Frecuencia de capitalización</li>
+          <li>Gráfico de crecimiento</li>
+          <li>Tabla año a año</li>
+        </ul>
+        <div class="card-btn">Simular inversión <span>→</span></div>
+      </a>
+
+      <!-- CONVERSOR DÓLAR -->
+      <a href="conversor-dolar.html" class="tool-card" style="--card-accent:#059669" data-name="dólar conversor tipo cambio USD CLP peso chileno">
+        <span class="card-icon">💵</span>
+        <div class="card-tag">Monedas</div>
+        <h3>Conversor Dólar a Peso</h3>
+        <p>Convierte dólares a pesos chilenos y viceversa con el tipo de cambio actualizado del día.</p>
+        <ul class="card-features">
+          <li>Tipo de cambio en tiempo real</li>
+          <li>USD ↔ CLP al instante</li>
+          <li>Histórico reciente</li>
+          <li>Fuente: Banco Central Chile</li>
+        </ul>
+        <div class="card-btn">Convertir dólar <span>→</span></div>
+      </a>
+
+      <!-- AFP -->
+      <a href="calculadora-afp.html" class="tool-card" style="--card-accent:#0369A1" data-name="AFP pensión jubilación ahorro previsional cotización">
+        <span class="card-icon">🏦</span>
+        <div class="card-tag">Previsión</div>
+        <h3>Calculadora AFP</h3>
+        <p>Estima tu pensión futura y el saldo en tu cuenta AFP según tu sueldo y años de cotización.</p>
+        <ul class="card-features">
+          <li>Estimación de pensión</li>
+          <li>Saldo proyectado</li>
+          <li>Comparativa de AFP</li>
+          <li>Impacto de comisiones</li>
+        </ul>
+        <div class="card-btn">Calcular AFP <span>→</span></div>
+      </a>
+
+      <!-- DESCUENTOS -->
+      <a href="calculadora-descuentos.html" class="tool-card" style="--card-accent:#B45309" data-name="descuento porcentaje precio oferta rebaja">
+        <span class="card-icon">🏷️</span>
+        <div class="card-tag">Compras</div>
+        <h3>Calculadora de Descuentos</h3>
+        <p>Calcula el precio final con descuento, el ahorro en pesos y el porcentaje de rebaja de cualquier producto.</p>
+        <ul class="card-features">
+          <li>Precio con % de descuento</li>
+          <li>Cuánto ahorras en pesos</li>
+          <li>Descuentos acumulados</li>
+          <li>Precio original desde precio final</li>
+        </ul>
+        <div class="card-btn">Calcular descuento <span>→</span></div>
+      </a>
+
+    </div>
+    <!-- No results message -->
+    <div id="no-results" style="display:none; text-align:center; padding:40px; color:var(--text-muted)">
+      <div style="font-size:2rem;margin-bottom:10px">🔍</div>
+      <p>No encontramos esa calculadora. Prueba con otro término.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ANUNCIO MEDIO -->
+<div class="container-lg">
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8987300357303329"
+         data-ad-slot="auto"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
+
+<!-- POR QUÉ USARNOS -->
+<section class="section-lg" style="background:var(--card); border-top:1px solid var(--border)">
+  <div class="container-lg">
+    <div class="section-title">
+      <h2>¿Por qué usar CalculadorasChile.cl?</h2>
+      <p>Diseñadas específicamente para la realidad financiera y legal de Chile.</p>
+    </div>
+    <div class="grid-4">
+      <div class="why-item">
+        <span class="why-icon">⚡</span>
+        <h4>Resultados instantáneos</h4>
+        <p>Cálculos al instante, sin esperas ni formularios interminables.</p>
       </div>
-
-      <div class="cards-grid">
-
-        <!-- SUELDO LÍQUIDO -->
-        <a href="sueldo-liquido.html" class="tool-card card-sueldo">
-          <span class="card-icon">💼</span>
-          <div class="card-tag">Remuneraciones</div>
-          <h3>Calculadora de Sueldo Líquido</h3>
-          <p>Descubre exactamente cuánto recibirás en tu cuenta después de todos los descuentos legales.</p>
-          <ul class="card-features">
-            <li>7 AFP con tasas reales 2026</li>
-            <li>Fonasa e Isapre</li>
-            <li>Impuesto único por tramos</li>
-            <li>Tabla de descuentos detallada</li>
-          </ul>
-          <div class="card-btn">
-            Calcular sueldo <span class="arrow">→</span>
-          </div>
-        </a>
-
-        <!-- UF -->
-        <a href="uf-calculadora.html" class="tool-card card-uf">
-          <span class="card-icon">📊</span>
-          <div class="card-tag">Indicadores</div>
-          <h3>Calculadora de UF</h3>
-          <p>Consulta el valor de la UF actualizado hoy y convierte entre pesos chilenos y UF al instante.</p>
-          <ul class="card-features">
-            <li>Valor UF en tiempo real</li>
-            <li>Conversor CLP → UF</li>
-            <li>Conversor UF → CLP</li>
-            <li>Tabla de referencias rápidas</li>
-          </ul>
-          <div class="card-btn">
-            Ver valor UF <span class="arrow">→</span>
-          </div>
-        </a>
-
-        <!-- CRÉDITO HIPOTECARIO -->
-        <a href="credito-hipotecario.html" class="tool-card card-credito">
-          <span class="card-icon">🏠</span>
-          <div class="card-tag">Vivienda</div>
-          <h3>Simulador Crédito Hipotecario</h3>
-          <p>Simula tu dividendo mensual y conoce el costo total de tu crédito hipotecario en Chile.</p>
-          <ul class="card-features">
-            <li>Cálculo en UF o CLP</li>
-            <li>Dividendo mensual exacto</li>
-            <li>Tabla de amortización completa</li>
-            <li>Gráfico capital vs intereses</li>
-          </ul>
-          <div class="card-btn">
-            Simular crédito <span class="arrow">→</span>
-          </div>
-        </a>
-
+      <div class="why-item">
+        <span class="why-icon">🎯</span>
+        <h4>Datos reales de Chile</h4>
+        <p>Tasas AFP, UF, UTM y leyes laborales actualizadas para 2026.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">📱</span>
+        <h4>Funciona en móvil</h4>
+        <p>Diseño responsive que se adapta perfectamente a cualquier pantalla.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">🔒</span>
+        <h4>Sin datos personales</h4>
+        <p>Todo se calcula en tu navegador. No guardamos ningún dato tuyo.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">🆓</span>
+        <h4>100% gratuito</h4>
+        <p>Sin registro, sin suscripción, sin cobros ocultos. Siempre gratis.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">🏦</span>
+        <h4>Fuentes oficiales</h4>
+        <p>UF del Banco Central, tasas AFP de la CMF, UTM del SII.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">📖</span>
+        <h4>Explicaciones claras</h4>
+        <p>Cada herramienta incluye guías y FAQ para entender los resultados.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">🇨🇱</span>
+        <h4>Hecho para Chile</h4>
+        <p>Calculadoras adaptadas al sistema tributario, previsional y laboral chileno.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- POR QUÉ -->
-  <section class="why-section">
-    <div class="container">
-      <div class="section-title">
-        <h2>¿Por qué usar estas herramientas?</h2>
-      </div>
-      <div class="why-grid">
-        <div class="why-item">
-          <div class="why-icon">⚡</div>
-          <h4>Instantáneo</h4>
-          <p>Resultados al instante, sin esperas ni formularios.</p>
-        </div>
-        <div class="why-item">
-          <div class="why-icon">🎯</div>
-          <h4>Preciso</h4>
-          <p>Cálculos basados en las tasas y valores reales de Chile 2026.</p>
-        </div>
-        <div class="why-item">
-          <div class="why-icon">📱</div>
-          <h4>Responsive</h4>
-          <p>Funciona perfecto en celular, tablet y computador.</p>
-        </div>
-        <div class="why-item">
-          <div class="why-icon">🔒</div>
-          <h4>Sin datos personales</h4>
-          <p>No guardamos nada. Todo se calcula en tu navegador.</p>
-        </div>
-      </div>
+<!-- BLOG / ARTÍCULOS -->
+<section class="section-lg">
+  <div class="container-lg">
+    <div class="section-title">
+      <span class="tag">Blog Financiero</span>
+      <h2>Guías y artículos financieros</h2>
+      <p>Aprende sobre finanzas personales, economía chilena y cómo tomar mejores decisiones con tu dinero.</p>
     </div>
-  </section>
+    <div class="grid-3">
+
+      <a href="blog/que-es-la-uf-chile.html" class="blog-card">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#0F4C81,#2563EB)">📊</div>
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Indicadores · Economía</div>
+          <h3>¿Qué es la UF y cómo afecta tu vida en Chile?</h3>
+          <p>Todo lo que necesitas saber sobre la Unidad de Fomento: qué es, cómo se calcula y cómo impacta tus créditos y arriendos.</p>
+          <div class="blog-card-meta">
+            <span>📅 Mayo 2026</span>
+            <span>⏱ 6 min lectura</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog/guia-credito-hipotecario-chile.html" class="blog-card">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#14532D,#059669)">🏠</div>
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Vivienda · Hipotecario</div>
+          <h3>Guía completa del crédito hipotecario en Chile 2026</h3>
+          <p>Requisitos, tasas, gastos operacionales, seguros y todo lo que debes saber antes de pedir un crédito hipotecario.</p>
+          <div class="blog-card-meta">
+            <span>📅 Mayo 2026</span>
+            <span>⏱ 8 min lectura</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog/como-calcular-sueldo-liquido.html" class="blog-card">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#1E40AF,#3B82F6)">💼</div>
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Laboral · Remuneraciones</div>
+          <h3>Cómo calcular tu sueldo líquido en Chile paso a paso</h3>
+          <p>Aprende a entender tu liquidación de sueldo: AFP, salud, impuesto único y todos los descuentos legales explicados.</p>
+          <div class="blog-card-meta">
+            <span>📅 Mayo 2026</span>
+            <span>⏱ 5 min lectura</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <div style="text-align:center; margin-top:28px">
+      <a href="blog/" class="btn btn-outline">Ver todos los artículos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TEMAS POPULARES -->
+<section style="background:var(--card); border-top:1px solid var(--border); padding:32px 0">
+  <div class="container-lg">
+    <h3 style="text-align:center; margin-bottom:20px; font-size:1rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:.06em">Temas populares</h3>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center">
+      <a href="uf-calculadora.html" class="topic-pill">📊 Valor UF hoy</a>
+      <a href="sueldo-liquido.html" class="topic-pill">💼 Sueldo líquido</a>
+      <a href="calculadora-iva.html" class="topic-pill">🧾 IVA Chile</a>
+      <a href="credito-hipotecario.html" class="topic-pill">🏠 Dividendo hipotecario</a>
+      <a href="calculadora-finiquito.html" class="topic-pill">📋 Finiquito</a>
+      <a href="conversor-dolar.html" class="topic-pill">💵 Dólar hoy</a>
+      <a href="calculadora-utm.html" class="topic-pill">📐 UTM 2026</a>
+      <a href="calculadora-vacaciones.html" class="topic-pill">🌴 Vacaciones</a>
+      <a href="calculadora-afp.html" class="topic-pill">🏦 AFP pensión</a>
+      <a href="calculadora-interes-compuesto.html" class="topic-pill">💹 Invertir en Chile</a>
+    </div>
+  </div>
+</section>
+
+<!-- ANUNCIO INFERIOR -->
+<div class="container-lg" style="padding-bottom:32px; padding-top:20px">
+  <div class="ad-slot">
+    <div class="ad-slot-label">Publicidad</div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8987300357303329"
+         data-ad-slot="auto"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
+
 </main>
 
-<footer>
-  <div class="container">
-    <div class="footer-brand">Calculadoras Chile</div>
-    <nav class="footer-links">
-      <a href="sueldo-liquido.html">💼 Sueldo Líquido</a>
-      <a href="uf-calculadora.html">📊 Calculadora UF</a>
-      <a href="credito-hipotecario.html">🏠 Crédito Hipotecario</a>
-    </nav>
-    <p>Herramientas financieras gratuitas para trabajadores y familias chilenas.</p>
-    <p class="disclaimer">
-      Los cálculos son de carácter informativo. No reemplaza asesoramiento financiero profesional. · Chile 2026
-    </p>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        <span style="font-size:1.4rem">🇨🇱</span>
+        <span>Calculadoras<strong>Chile</strong></span>
+      </a>
+      <p>Portal de herramientas financieras gratuitas para Chile. Calculadoras actualizadas con datos oficiales del Banco Central, SII y CMF.</p>
+      <p style="margin-top:10px; font-size:.8rem; opacity:.5">Santiago, Chile · 2026</p>
+    </div>
+    <div class="footer-col">
+      <h4>Calculadoras</h4>
+      <a href="sueldo-liquido.html">Sueldo Líquido</a>
+      <a href="uf-calculadora.html">Calculadora UF</a>
+      <a href="credito-hipotecario.html">Crédito Hipotecario</a>
+      <a href="calculadora-iva.html">Calculadora IVA</a>
+      <a href="calculadora-utm.html">UTM a CLP</a>
+      <a href="calculadora-vacaciones.html">Calculadora Vacaciones</a>
+      <a href="calculadora-finiquito.html">Calculadora Finiquito</a>
+      <a href="calculadora-afp.html">Calculadora AFP</a>
+    </div>
+    <div class="footer-col">
+      <h4>Recursos</h4>
+      <a href="blog/">Blog Financiero</a>
+      <a href="blog/que-es-la-uf-chile.html">¿Qué es la UF?</a>
+      <a href="blog/guia-credito-hipotecario-chile.html">Guía Hipotecaria</a>
+      <a href="blog/como-calcular-sueldo-liquido.html">Cómo calcular tu sueldo</a>
+      <a href="calculadora-interes-compuesto.html">Interés Compuesto</a>
+      <a href="conversor-dolar.html">Conversor Dólar</a>
+      <a href="calculadora-descuentos.html">Calculadora Descuentos</a>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <a href="sobre-nosotros.html">Sobre Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="privacidad.html">Política de Privacidad</a>
+      <a href="terminos.html">Términos y Condiciones</a>
+      <div style="margin-top:16px" class="footer-contact-item">
+        <span>📧</span>
+        <span>contacto@calculadoraschile.cl</span>
+      </div>
+      <div class="footer-contact-item">
+        <span>📍</span>
+        <span>Santiago, Chile</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 CalculadorasChile.cl · Todos los derechos reservados</span>
+    <span>Los cálculos son de carácter informativo y no reemplazan asesoría financiera profesional.</span>
   </div>
 </footer>
 
+<script src="js/app.js"></script>
+<script>
+  // Buscador de calculadoras
+  const searchInput = document.getElementById('calc-search');
+  const calcGrid    = document.getElementById('calc-grid');
+  const cards       = calcGrid.querySelectorAll('.tool-card');
+  const noResults   = document.getElementById('no-results');
+
+  searchInput.addEventListener('input', function() {
+    const q = this.value.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+    let visible = 0;
+    cards.forEach(card => {
+      const text = (card.dataset.name + ' ' + card.textContent).toLowerCase()
+                     .normalize('NFD').replace(/[̀-ͯ]/g,'');
+      const show = !q || text.includes(q);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  });
+</script>
 </body>
 </html>
