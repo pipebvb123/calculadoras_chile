@@ -5,7 +5,9 @@
       "Bash(npm --version)",
       "Bash(dir \"c:\\\\calculadoras-chile\")",
       "Bash(npm install *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('scripts:', d.get\\('scripts'\\)\\); print\\('name:', d.get\\('name'\\)\\)\")",
+      "Bash(git rm *)"
     ],
     "additionalDirectories": [
       "c:\\calculadoras-chile"
