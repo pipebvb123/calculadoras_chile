@@ -21,11 +21,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogPosts = [
     'que-es-la-uf-chile',
-    'guia-credito-hipotecario-chile',
     'como-calcular-sueldo-liquido',
+    'guia-credito-hipotecario-chile',
     'reforma-previsional-chile-2026',
     'calcula-finiquito-chile',
     'interes-compuesto-jubilacion',
+    'ahorro-previsional-voluntario-apv',
+    'impuesto-segunda-categoria-chile',
+    'uf-en-arriendo-chile',
+    'finanzas-personales-chile-2026',
   ]
 
   const staticPages = [

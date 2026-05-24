@@ -7,6 +7,8 @@ interface AdSlotProps {
   className?: string
 }
 
+// Auto Ads: Google places ads automatically via the script in layout.tsx
+// These containers serve as visual placeholders and hint locations to Google
 export function AdSlot({ id, className = '' }: AdSlotProps) {
   useEffect(() => {
     try {
@@ -16,13 +18,12 @@ export function AdSlot({ id, className = '' }: AdSlotProps) {
   }, [])
 
   return (
-    <div className={`ad-container my-6 ${className}`} data-ad-id={id}>
-      <div className="text-[10px] text-slate-700 uppercase tracking-widest mb-2">Publicidad</div>
+    <div className={`ad-container my-6 ${className}`}>
       <ins
         className="adsbygoogle"
-        style={{ display: 'block' }}
+        style={{ display: 'block', minHeight: '90px' }}
         data-ad-client="ca-pub-8987300357303329"
-        data-ad-slot="auto"
+        data-ad-slot={id}
         data-ad-format="auto"
         data-full-width-responsive="true"
       />
